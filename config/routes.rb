@@ -7,6 +7,6 @@ Rails.application.routes.draw do
   end
 
   scope module: :public do
-    resources :customers
+    
   end
 end
