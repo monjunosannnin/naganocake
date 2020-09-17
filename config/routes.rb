@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  devise_for :customers
   devise_for :admin
+  devise_for :customer
 
   namespace :admin do
     root "homes#top"
