@@ -1,2 +1,0 @@
-module Piblic::HomesHelper
-end
