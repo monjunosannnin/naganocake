@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>ながのCAKE</title>
+    <title>Naganocake</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,14 +10,6 @@
   </head>
 
   <body>
-    <%= render "admin/header" %>
-    <main>
-      <div class="container">
-        <div class="row">
-          <%= render "admin/function" %>
-          <%= yield %>
-        </div>
-      </div>
-    </main>
+    <%= yield %>
   </body>
 </html>
