@@ -10,6 +10,10 @@
   </head>
 
   <body>
-    <%= yield %>
+    <%= render "shared/header" %>
+    <main>
+      <%= render "shared/function" %>
+      <%= yield %>
+    </main>
   </body>
 </html>
