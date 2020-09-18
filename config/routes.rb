@@ -1,9 +1,14 @@
 Rails.application.routes.draw do
-  devise_for :customers
-  devise_for :admin
 
-  namespace :admin do
+  devise_for :admins, controllers: {
+    sessions: "admins/sessions"
+  }
+
+  devise_for :customers
+
+  namespace :admins do
     root "homes#top"
+      resources :products
   end
 
   scope module: :public do
