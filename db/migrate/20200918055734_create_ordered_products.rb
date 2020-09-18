@@ -7,7 +7,6 @@ class CreateOrderedProducts < ActiveRecord::Migration[5.2]
       t.integer :status, null: false, default: 0
       t.integer :price, null: false
       t.timestamps
-      t.timestamps
     end
   end
 end
