@@ -98,7 +98,7 @@ ActiveRecord::Schema.define(version: 2020_09_18_061011) do
   end
 
   create_table "products", force: :cascade do |t|
-    t.integer "genre_id_id", null: false
+    t.integer "genre_id", null: false
     t.string "name", null: false
     t.text "explanation", null: false
     t.string "image_id", null: false
@@ -106,7 +106,7 @@ ActiveRecord::Schema.define(version: 2020_09_18_061011) do
     t.boolean "is_active"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["genre_id_id"], name: "index_products_on_genre_id_id"
+    t.index ["genre_id"], name: "index_products_on_genre_id"
     t.index ["name"], name: "index_products_on_name"
   end
 
