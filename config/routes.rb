@@ -6,9 +6,10 @@ Rails.application.routes.draw do
 
   namespace :admins do
     root "homes#top"
+      resources :products
   end
 
   scope module: :public do
-    
+    resources :customers
   end
 end

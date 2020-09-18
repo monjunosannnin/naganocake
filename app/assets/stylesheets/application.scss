@@ -16,6 +16,10 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
  
+html, body {
+  font-family: "font-kaze";
+}
+
 * {
   font-size: 16px;
 }
@@ -30,6 +34,7 @@ li {
 }
 
 .header-logo {
+  font-family: "font-kaze";
   height: 50px;
   font-size: 30px;
   color: #ffffff;
