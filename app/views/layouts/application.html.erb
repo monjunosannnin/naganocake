@@ -12,8 +12,10 @@
   <body>
     <%= render "shared/header" %>
     <main>
-      <%= render "shared/function" %>
-      <%= yield %>
+      <div class="container">
+        <%= render "shared/function" %>
+        <%= yield %>
+      </div>
     </main>
   </body>
 </html>

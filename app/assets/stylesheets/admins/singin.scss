@@ -1,0 +1,30 @@
+.login_form {
+
+  .field {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+
+    label {
+      width: 150px;
+    }
+
+    input {
+      width: 200px;
+    }
+  }
+
+  .login_button input {
+    width: 150px;
+    height: 50px;
+    font-size: 2rem;
+    color: #ffffff;
+    background-color: #3434cf;
+    border-radius: 5px;
+  }
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+}

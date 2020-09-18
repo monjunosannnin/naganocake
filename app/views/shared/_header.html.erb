@@ -6,11 +6,11 @@
       </nav>
       <nav>
         <ul class="nav navbar-nav navbar-right">
-          <button type="button" class="btn btn-default navbar-btn">商品一覧</button>
-          <button type="button" class="btn btn-default navbar-btn">会員一覧</button>
-          <button type="button" class="btn btn-default navbar-btn">注文履歴一覧</button>
-          <button type="button" class="btn btn-default navbar-btn">ジャンル一覧</button>
-          <button type="button" class="btn btn-default navbar-btn">ログアウト</button>
+          <%= button_to "商品一覧", "#", method: :delete, class: "btn btn-default navbar-btn" %>
+          <%= button_to "会員一覧", "#", method: :delete, class: "btn btn-default navbar-btn" %>
+          <%= button_to "注文履歴一覧", "#", method: :delete, class: "btn btn-default navbar-btn" %>
+          <%= button_to "ジャンル一覧", "#", method: :delete, class: "btn btn-default navbar-btn" %>
+          <%= button_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn btn-default navbar-btn" %>
         </ul>
       </nav>
     </div>
