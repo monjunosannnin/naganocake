@@ -1,1 +1,7 @@
-<%= render "form", genre: @genre %>
+<%= form_with model: @genre, url: admins_genre_path, class: "genre_form" do |f| %>
+  <%= render "form", genre: @genre, f: f %>
+
+  <div class="actions">
+    <%= f.submit "変更を保存する" %>
+  </div>
+<% end %>

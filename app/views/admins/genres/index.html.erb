@@ -1,4 +1,10 @@
-<%= render "form", genre: @genre %>
+<%= form_with model: @genre, url: admins_genres_path, class: "genre_form" do |f| %>
+  <%= render "form", genre: @genre, f: f %>
+
+  <div class="actions">
+    <%= f.submit "追加" %>
+  </div>
+<% end %>
 
 <table>
   <thead>
