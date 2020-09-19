@@ -1,0 +1,65 @@
+<%= form_with model: @customer, url: admins_customer_path, id: "customer_form" do |f| %>
+  <table>
+    <tbody>
+      <tr>
+        <td>顧客ID</td>
+        <td><%= @customer.id %></td>
+      </tr>
+      <tr>
+        <td>氏名</td>
+        <td>
+          <%= f.text_field :kanji_familyname, autofocus: true, autocomplete: "family-name", class: "td-half" %>
+          <%= f.text_field :kanji_firstname, autofocus: true, autocomplete: "first-name", class: "td-half" %>
+        </td>
+      </tr>
+      <tr>
+        <td>フリガナ</td>
+        <td>
+          <%= f.text_field :kana_familyname, autofocus: true, autocomplete: "family-name", class: "td-half" %>
+          <%= f.text_field :kana_firstname, autofocus: true, autocomplete: "first-name", class: "td-half" %>
+        </td>
+      </tr>
+      <tr>
+        <td>郵便番号</td>
+        <td>
+          <%= f.text_field :postal_code, autofocus: true, autocomplete: "postal-code" %>
+        </td>
+      </tr>
+      <tr>
+        <td>住所</td>
+        <td>
+          <%= f.text_field :address, autofocus: true, autocomplete: "street-address" %>
+        </td>
+      </tr>
+      <tr>
+        <td>電話番号</td>
+        <td>
+          <%= f.text_field :telephone_number, autofocus: true, autocomplete: "street-address" %>
+        </td>
+      </tr>
+      <tr>
+        <td>メールアドレス</td>
+        <td>
+          <%= f.text_field :email, autofocus: true, autocomplete: "email" %>
+        </td>
+      </tr>
+      <tr>
+        <td>会員ステータス</td>
+        <td>
+          <%= f.check_box :is_deleted, {:checked => !@customer.is_deleted}, checked_value = "false", unchecked_value = "true" %>
+          <%= f.label :is_deleted, "有効" %>
+          <% if @customer.is_deleted == false %>
+            <input type="checkbox", id="passive">
+          <% else %>
+            <input type="checkbox", id="passive", checked="checked">
+          <% end %>
+          <label for="passive">退会済み</label>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="actions" id="app_button">
+    <%= f.submit "変更を保存する" %>
+  </div>
+<% end %>
