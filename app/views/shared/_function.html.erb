@@ -9,5 +9,7 @@
     <p class="col-xs-3 col-xs-offset-2">ジャンル一覧・追加</p>
   <% elsif request.fullpath == admins_customers_path %>
     <p class="col-xs-3 col-xs-offset-2">会員一覧</p>
+  <% elsif request.fullpath == @page %>
+    <p class="col-xs-3 col-xs-offset-2">会員一覧</p>
   <% end %>
 </div>
