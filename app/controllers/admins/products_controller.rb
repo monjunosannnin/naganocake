@@ -1,7 +1,7 @@
 class Admins::ProductsController < ApplicationController
 
   # before_action :authenticate_admin!
-  before_action :set_product, only: [:show, :edit, :update, :destroy]
+  before_action :set_product, only: [:show, :edit, :update]
 
   def index
     @products = Product.all.page(params[:page]).per(10)
@@ -33,9 +33,6 @@ class Admins::ProductsController < ApplicationController
       redirect_back(fallback_location: root_path)
   end
 
-  def destroy
-  end
-
   private
 
   def product_params
@@ -44,6 +41,7 @@ class Admins::ProductsController < ApplicationController
 
   def set_product
     @product = Product.find(params[:id])
+  end
   end
 
 end

@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   }
 
   devise_for :customers, controllers: {
-    registrations: 'customers/registrations'
+    sessions: "coutomers/sessions"
   }
 
   namespace :admins do
@@ -14,11 +14,11 @@ Rails.application.routes.draw do
     resources :genres, only: [ :index, :create, :edit, :update ]
     resources :customers, only: [ :index, :show, :edit, :update ]
   end
-end
 
   scope module: :public do
     root 'homes#top'
-      get 'about' => 'homes#about'
-      resources :customers
+    get 'top' => 'homes#top'
+    get 'about' => 'homes#about'
+    resources :customers
   end
 end
