@@ -11,7 +11,11 @@
     <% @customers.each do |c| %>
       <tr>
         <td><%= c.id %></td>
-        <td><%= c.kanji_familyname + c.kanji_firstname %></td>
+        <td>
+          <%= link_to admins_customer_path(c.id) do %>
+            <%= c.kanji_familyname + c.kanji_firstname %>
+          <% end %>
+        </td>
         <td><%= c.email %></td>
         <td>
           <% if c.is_deleted == true %>
@@ -25,4 +29,6 @@
   </tbody>
 </table>
 
-<%= paginate @customers %>
+<div class="paginate_wrapper">
+  <%= paginate @customers %>
+</div>

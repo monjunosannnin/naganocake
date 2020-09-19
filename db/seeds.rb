@@ -6,6 +6,8 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+
+# 1件目
 Admin.create!(
 	email: 'test_admin@gmail.com',
 	password: 'testadmin'
@@ -75,6 +77,8 @@ Admin.create!(
 	password: 'testadmin2'
 )
 
+#2件目
+
 Customer.create!(
   kanji_familyname: '武田',
   kanji_firstname: '要',
@@ -113,7 +117,7 @@ Delivery.create!(
 
 Product.create!(
   genre_id: Genre.find(2).id,
-  name: "パフェ",
+  name: "チーズケーキ",
   explanation: "美味しいです",
   image_id: File.open('./app/assets/images/test.jpg'),
   price: 1000,
@@ -121,15 +125,15 @@ Product.create!(
 )
 
 OrderedProduct.create!(
-  order_id: Order.find(1).id,
-  product_id: Product.find(1).id,
+  order_id: Order.find(2).id,
+  product_id: Product.find(2).id,
   quantity: 1,
   status: 0,
   price: 1100
 )
 
 CartItem.create!(
-  customer_id: Customer.find(1).id,
-  product_id: Product.find(1).id,
-  quantity: 5
+  customer_id: Customer.find(2).id,
+  product_id: Product.find(2).id,
+  quantity: 3
 )
