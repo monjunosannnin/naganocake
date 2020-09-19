@@ -8,7 +8,8 @@ Rails.application.routes.draw do
 
   namespace :admins do
     root "homes#top"
-      resources :products
+    resources :products
+    resources :genres, only: [ :index, :create, :edit, :update ]
   end
 
   scope module: :public do

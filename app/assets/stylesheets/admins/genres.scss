@@ -1,3 +1,53 @@
-// Place all the styles related to the admin/genres controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.genre_form {
+  display: flex;
+  align-items: center;
+
+  .field {
+    margin-right: 30px;
+
+    label:first-child {
+      margin-right: 20px;
+    }
+
+    #passive {
+      margin-left: 20px;
+    }
+  }
+
+  .actions {
+
+    input {
+      color: #ffffff;
+      background-color: #428dd9;
+      border-radius: 5px;
+    }
+  }
+}
+
+table {
+  margin-top: 50px;
+
+  thead {
+    background-color: #adaaaa;
+    
+    th {
+      width: 100px;
+      
+      &:first-child {
+        width: 300px;
+      }
+    }
+  }
+
+  tbody {
+
+    td {
+      border-bottom: 1px solid #adaaaa;
+
+      .btn {
+        color: #ffffff;
+        background-color: #1862ab;
+      }
+    }
+  }
+}
