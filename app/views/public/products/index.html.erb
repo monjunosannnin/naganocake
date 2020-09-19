@@ -1,4 +1,5 @@
 <%= render 'shared/header' %>
+
 <h2>ジャンル検索</h2>
 <ul>
 	<li>ケーキ</li>
@@ -6,3 +7,11 @@
 	<li>プリン</li>
 	<li>キャンディ</li>
 </ul>
+
+<h1>商品一覧</h1>
+<p>全<%= @products.count %>件</p>
+<%= @products.each do |product| %>
+	<%= product.image_id %>
+	<%= product.name %>
+	<%= product.price %>
+<% end %>
