@@ -2,26 +2,19 @@
 
 <h2>ジャンル検索</h2>
 <ul>
-	<li>ケーキ</li>
-	<li>焼き菓子</li>
-	<li>プリン</li>
-	<li>キャンディ</li>
+	<li><%= link_to 'ケーキ',products_path, genre_id: @genre.id %></li>
+	<li><%= link_to '焼き菓子',products_path, genre_id: @genre.id %></li>
+	<li><%= link_to 'プリン',products_path, genre_id: @genre.id %></li>
+	<li><%= link_to 'キャンディ',products_path, genre_id: @genre.id %></li>
 </ul>
 
-<% if request.referer&.include?("//") %>
-	<%= @products.each do |product| %>	
-		<h1>商品一覧</h1>
-		<p>全<%= product.count %>件</p>
-		<%= product.image_id %>
-		<%= product.name %>
-		<%= product.price %>
-	<% end %>
-<% else %>
-	<h1><%= @product.genre_id.name %>一覧</h1>
-	<%= @products.each do |product| %>
-		<p>全<%= product.genre_id.count %>件</p>
-		<%= product.image_id %>
-		<%= product.name %>
-		<%= product.price %>
-	<% end %>
+<h1><%= @name %>一覧</h1>
+<p>全<%= @products.count %>件</p>
+<% @products.each do |product| %>
+	<%# attachment_image_tag product, :image, :fill, 50, 50, size: '50x50' %>
+	<p><%= product.name %></p>
+	<p><%= product.price %></p>
 <% end %>
+
+
+
