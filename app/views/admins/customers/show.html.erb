@@ -1,0 +1,51 @@
+<div id="customer_show">
+  <table>
+    <tbody>
+      <tr>
+        <td>顧客ID</td>
+        <td>
+          <p>
+            <%= @customer.id %>
+          </p>
+          <p>
+            <% if @customer.is_deleted == false %>
+              有効会員
+            <% else %>
+              退会済会員
+            <% end %>
+          </p>
+        </td>
+      </tr>
+      <tr>
+        <td>氏名</td>
+        <td><%= @customer.kanji_familyname + "　" + @customer.kanji_firstname %></td>
+      </tr>
+      <tr>
+        <td>フリガナ</td>
+        <td><%= @customer.kana_familyname + "　" + @customer.kana_firstname %></td>
+      </tr>
+      <tr>
+        <td>郵便番号</td>
+        <td><%= @customer.postal_code %></td>
+      </tr>
+      <tr>
+        <td>住所</td>
+        <td><%= @customer.address %></td>
+      </tr>
+      <tr>
+        <td>電話番号</td>
+        <td><%= @customer.telephone_number %></td>
+      </tr>
+      <tr>
+        <td>メールアドレス</td>
+        <td><%= @customer.email %></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div id=app_button>
+    <%= button_to "編集する", edit_admins_customer_path, method: :get, class: "btn btn-default navbar-btn" %>
+
+    <%= button_to "注文履歴一覧を見る", edit_admins_customer_path, method: :get, class: "btn btn-default navbar-btn" %>
+  </div>
+</div>

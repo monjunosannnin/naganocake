@@ -8,4 +8,113 @@
       padding-right: 80px;
     }
   }
+<<<<<<< Updated upstream
+=======
+}
+
+.paginate_wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+#customer_show {
+  
+  table {
+    margin: auto;
+    margin-bottom: 20px;
+    
+    tbody {
+      
+      td {
+        padding: 15px;
+        border-bottom: 1px solid #adaaaa;
+        
+        p {
+          display: inline-block;
+          margin-right: 80px;
+          
+          &:last-child {
+            padding: 5px;
+            margin-right: 0;
+            border: 1px solid #000000;
+            border-radius: 3px;
+            background-color: #2ac5dc;
+          }
+        }
+      }
+    }
+  }
+
+  #app_button {
+    display: flex;
+    justify-content: center;
+
+    input {
+      margin-right: 30px;
+    }
+  }
+}
+
+#customer_form {
+  
+  table {
+    margin: auto;
+    margin-bottom: 20px;
+    
+    tbody {
+      
+      td {
+        padding: 15px;
+        border-bottom: 1px solid #adaaaa;
+        text-align: center;
+        
+        p {
+          display: inline-block;
+          margin-right: 80px;
+          
+          &:last-child {
+            padding: 5px;
+            margin-right: 0;
+            border: 1px solid #000000;
+            border-radius: 3px;
+            background-color: #2ac5dc;
+          }
+        }
+
+        input {
+          text-align: center !important;
+        }
+
+        .td-half {
+          width: 150px !important;
+        }
+
+        #customer_postal_code {
+          width: 100%;
+        }
+
+        #customer_address {
+          width: 100%;
+        }
+
+        #customer_telephone_number {
+          width: 100%;
+        }
+
+        #customer_email {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  #app_button {
+    display: flex;
+    justify-content: center;
+
+    input {
+      margin-right: 30px;
+    }
+  }
+>>>>>>> Stashed changes
 }
