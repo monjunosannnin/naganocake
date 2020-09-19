@@ -8,10 +8,20 @@
 	<li>キャンディ</li>
 </ul>
 
-<h1>商品一覧</h1>
-<p>全<%= @products.count %>件</p>
-<%= @products.each do |product| %>
-	<%= product.image_id %>
-	<%= product.name %>
-	<%= product.price %>
+<% if request.referer&.include?("//") %>
+	<%= @products.each do |product| %>	
+		<h1>商品一覧</h1>
+		<p>全<%= product.count %>件</p>
+		<%= product.image_id %>
+		<%= product.name %>
+		<%= product.price %>
+	<% end %>
+<% else %>
+	<h1><%= @product.genre_id.name %>一覧</h1>
+	<%= @products.each do |product| %>
+		<p>全<%= product.genre_id.count %>件</p>
+		<%= product.image_id %>
+		<%= product.name %>
+		<%= product.price %>
+	<% end %>
 <% end %>
