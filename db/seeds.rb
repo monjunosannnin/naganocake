@@ -69,3 +69,67 @@ CartItem.create!(
   product_id: Product.find(1).id,
   quantity: 5
 )
+
+Admin.create!(
+	email: 'test_admin2@gmail.com',
+	password: 'testadmin2'
+)
+
+Customer.create!(
+  kanji_familyname: '武田',
+  kanji_firstname: '要',
+  kana_familyname: 'タケダ',
+  kana_firstname: 'カナメ',
+  email: 'test_customer2@gmail.com',
+  password: 'testcustomer2',
+  telephone_number: '00000000001',
+  postal_code: '1000005',
+  address: '東京都千代田区丸の内',
+  is_deleted: false
+)
+
+Genre.create!(
+  name: 'ケーキ',
+  is_active: true
+)
+
+Order.create!(
+  customer_id: Customer.find(2).id,
+  payment_method: 0,
+  billing_amount: 1900,
+  name: '武田要',
+  postal_code: '1000005',
+  address: '東京都千代田区丸の内',
+  shipping_cost: 800,
+  status: 0
+)
+
+Delivery.create!(
+  customer_id: Customer.find(2).id,
+  name: '武田要',
+  postal_code: '1000005',
+  address: '東京都千代田区丸の内'
+)
+
+Product.create!(
+  genre_id: Genre.find(2).id,
+  name: "パフェ",
+  explanation: "美味しいです",
+  image_id: File.open('./app/assets/images/test.jpg'),
+  price: 1000,
+  is_active: true
+)
+
+OrderedProduct.create!(
+  order_id: Order.find(1).id,
+  product_id: Product.find(1).id,
+  quantity: 1,
+  status: 0,
+  price: 1100
+)
+
+CartItem.create!(
+  customer_id: Customer.find(1).id,
+  product_id: Product.find(1).id,
+  quantity: 5
+)

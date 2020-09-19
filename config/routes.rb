@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     root "homes#top"
     resources :products
     resources :genres, only: [ :index, :create, :edit, :update ]
+    resources :customers, only: [ :index, :show, :edit, :update ]
   end
 
   scope module: :public do
