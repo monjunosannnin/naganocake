@@ -1,0 +1,32 @@
+<%= form_with model: @genre, url: admins_genres_path, class: "genre_form" do |f| %>
+  <%= render "form", genre: @genre, f: f %>
+
+  <div class="actions">
+    <%= f.submit "追加" %>
+  </div>
+<% end %>
+
+<table>
+  <thead>
+    <tr>
+      <th>ジャンル</th>
+      <th>状態</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @genres.each do |g| %>
+      <tr>
+        <td><%= g.name %></td>
+        <td>
+          <% if g.is_active == true %>
+            有効
+          <% else %>
+            無効
+          <% end %>
+        </td>
+        <td><%= button_to "編集する", edit_admins_genre_path(g.id), method: :get, class: "btn btn-default navbar-btn" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
