@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   }
 
   devise_for :customers, controllers: {
-    sessions: "coutomers/sessions"
+    sessions: 'coutomers/sessions'
   }
 
   namespace :admins do
