@@ -20,7 +20,7 @@
 //= require_tree .
 $(function(){
 $("document").ready(function() {
- 
+
 // オプションを指定してSkipprの実行
 $("#theTarget").skippr({
     // スライドショーの変化 ("fade" or "slide")

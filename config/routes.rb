@@ -4,13 +4,16 @@ Rails.application.routes.draw do
     sessions: "admins/sessions"
   }
 
-  devise_for :customers
+  devise_for :customers, controllers: {
+    registrations: 'customers/registrations'
+  }
 
   namespace :admins do
     root "homes#top"
     resources :products
     resources :genres, only: [ :index, :create, :edit, :update ]
   end
+end
 
   scope module: :public do
     root 'homes#top'
