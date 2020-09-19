@@ -11,11 +11,12 @@
  * It is generally better to create a new file per style scope.
  *
  *= require_tree .
+ *= require_tree ../../../vendor/assets/stylesheets/.
  *= require_self
  */
  @import "bootstrap-sprockets";
  @import "bootstrap";
- 
+
 html, body {
   font-family: "font-kaze";
 }
@@ -71,3 +72,7 @@ main {
     font-size: 3rem;
   }
 }
+
+#container{
+  height: 500px;
+ }

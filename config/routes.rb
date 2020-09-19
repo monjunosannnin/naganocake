@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   end
 
   scope module: :public do
-    resources :customers
+    root 'homes#top'
+      get 'about' => 'homes#about'
+      resources :customers
   end
 end
