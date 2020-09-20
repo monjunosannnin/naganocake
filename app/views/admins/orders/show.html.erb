@@ -1,0 +1,78 @@
+<table id="order_show">
+  <tbody>
+    <tr>
+      <td>購入者</td>
+      <td>
+          <%= link_to @customer_name, admins_customer_path(@order.customer_id) %>
+      </td>
+    </tr>
+    <tr>
+      <td>配送先</td>
+      <td>
+        <%= "〒" + @order.postal_code + "　" + @order.address %><br>
+        <%= @order.name %>
+      </td>
+    </tr>
+    <tr>
+      <td>支払方法</td>
+      <td><%= @order.payment_method %></td>
+    </tr>
+    <tr>
+      <td>注文ステータス</td>
+      <td>
+        <%= form_with model: @order, url: admins_order_path(@order.id), local: true do |f| %>
+          <%= f.select :status, options_for_select(Order.statuses.keys, @order.status) %>
+          <%= f.submit "更新", {id: "status"} %>
+        <% end %>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="order_price">
+  <table id="ordered_product_show">
+    <thead>
+      <tr>
+        <th>商品名</th>
+        <th>単価（税込）</th>
+        <th>数量</th>
+        <th>小計</th>
+        <th>注文ステータス</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @ordered_products.each do |o| %>
+        <tr>
+          <td><%= o.product.name %></td>
+          <td><%= o.price %>
+          <td><%= o.quantity %></td>
+          <td><%= o.price * o.quantity %><% @total_price = o.price * o.quantity + @total_price %></td>
+          <td>
+            <%= form_with model: o, url: admins_ordered_product_path(o.id), local: true do |f| %>
+              <%= f.select :status, options_for_select(OrderedProduct.statuses.keys, o.status) %>
+              <%= f.submit "更新", {id: "status"} %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <table id="order_total_price">
+    <tbody>
+      <tr>
+        <td>商品合計</td>
+        <td><%= @total_price %>円</td>
+      </tr>
+      <tr>
+        <td>送料</td>
+        <td><%= @order.shipping_cost %>円</td>
+      </tr>
+      <tr>
+        <td>請求金額合計</td>
+        <td><%= @total_price + @order.shipping_cost %>円</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -66,6 +66,14 @@ OrderedProduct.create!(
   price: 1100
 )
 
+OrderedProduct.create!(
+  order_id: Order.find(1).id,
+  product_id: Product.find(1).id,
+  quantity: 1,
+  status: 0,
+  price: 1100
+)
+
 CartItem.create!(
   customer_id: Customer.find(1).id,
   product_id: Product.find(1).id,
