@@ -3,6 +3,6 @@ class Admins::HomesController < ApplicationController
 
   def top
     @today_orders = Order.where(created_at: Time.now.all_day)
+    @page_title = "管理者画面"
   end
-
 end
