@@ -19,5 +19,6 @@ Rails.application.routes.draw do
     get 'about' => 'homes#about'
     get '/customers' => 'customers#show',as: 'mypage'
     resources :customers
+    resources :products, only: [ :index, :show ]
   end
 end

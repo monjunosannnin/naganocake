@@ -1,0 +1,19 @@
+<%= render 'shared/header' %>
+
+<h2>ジャンル検索</h2>
+<ul>
+	<% @genres.each do |genre| %>
+		<li><%= link_to genre.name, products_path(genre_id: genre.id) %></li>
+	<% end %>
+</ul>
+
+<h1><%= @name %>一覧</h1>
+<p>全<%= @products.count %>件</p>
+<% @products.each do |product| %>
+	<%# attachment_image_tag product, :image, :fill, 50, 50, size: '50x50' %>
+	<p><%= link_to product.name, product_path(id: product.id, genre_id: @genre.id,) %></p>
+	<p><%= product.price %></p>
+<% end %>
+
+
+
