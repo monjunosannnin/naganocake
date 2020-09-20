@@ -1,0 +1,19 @@
+<header class="navbar navbar-fixed-top navbar-inverse">
+    <div class="container">
+      <nav class="nav navbar-nav navbar-left">
+        <p class="header-logo">ながのCAKE</p>
+      </nav>
+      <nav>
+        <ul class="nav navbar-nav navbar-right">
+          <% if user_signed_in? %>
+            <h4>ようこそ<%= current_user.name %>さん</h4>
+          <% end %>
+          <%= button_to "商品一覧", admins_products_path, method: :get, class: "btn btn-default navbar-btn" %>
+          <%= button_to "マイページ", "#", method: :get, class: "btn btn-default navbar-btn" %>
+          <%= button_to "商品一覧", "#", method: :get, class: "btn btn-default navbar-btn" %>
+          <%= button_to "カート", "#", method: :get, class: "btn btn-default navbar-btn" %>
+          <%= button_to "ログアウト", "#", method: :delete, class: "btn btn-default navbar-btn" %>
+        </ul>
+      </nav>
+    </div>
+  </header>

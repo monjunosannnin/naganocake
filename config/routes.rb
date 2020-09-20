@@ -4,9 +4,7 @@ Rails.application.routes.draw do
     sessions: "admins/sessions"
   }
 
-  devise_for :customers, controllers: {
-    sessions: 'coutomers/sessions'
-  }
+  devise_for :customers
 
   namespace :admins do
     root "homes#top"
@@ -19,6 +17,7 @@ Rails.application.routes.draw do
     root 'homes#top'
     get 'top' => 'homes#top'
     get 'about' => 'homes#about'
+    get '/customers' => 'customers#show',as: 'mypage'
     resources :customers
   end
 end

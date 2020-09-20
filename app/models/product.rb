@@ -2,9 +2,6 @@ class Product < ApplicationRecord
 
   belongs_to :genre
 
-  attachment :image
+  attachment :image_id
 
-  def active_by?(product)
-    active.where(product_id: product.id).exists?
-  end
 end

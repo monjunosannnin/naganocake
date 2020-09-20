@@ -9,14 +9,31 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   </head>
-
-  <body>
-    <%= render "shared/header" %>
+<body>
+  <% if admin_signed_in? %>
+<!-- 管理者画面のヘッダー -->
+<div class="top"></div>
+<%= render "shared/header" %>
     <main>
       <div class="container">
         <%= render "shared/function" %>
-        <%= yield %>
       </div>
     </main>
-  </body>
+<else>
+<!-- 顧客側　ログイン後 -->
+<%= render "shared/cs_header" %>
+<footer>
+  <div class="container">
+    <div class="row">
+        <div class="col-xs-3 col-xs-offset-9">
+        </div>
+    </div>
+  </div>
+</footer>
+<% elsif %>
+<!-- 顧客側　ログインなし -->
+<%= render "shared/cs_header_before" %>
+<% end %>
+<%= yield %>
+</body>
 </html>

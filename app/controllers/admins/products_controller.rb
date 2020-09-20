@@ -9,7 +9,7 @@ class Admins::ProductsController < ApplicationController
 
   def new
     @product = Product.new
-    @product_image = ProductImage.new
+    #@image = Image.new
   end
 
   def create
@@ -36,7 +36,7 @@ class Admins::ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:genre_id, :name, :explanation, :image_id, :price, :is_active)
+    params.require(:product).permit(:genre_id, :name, :explanation, :image, :price, :is_active)
   end
 
   def set_product

@@ -1,10 +1,13 @@
 <h1>商品新規登録</h1>
 <!-- 商品画像 -->
 <div class="form-body">
-<%= form_for(@product) do |f| %>
   <div class="form-group has-icon">
     <div class="user-edit-image">
-      <%= attachment_image_tag @product, :image_id, :fill, 100, 100, class: "img-circle pull-left profile-thumb"%>
+    	<%= form_with url:new_admins_product_path do |f| %>
+		 <div class="user-edit-image">
+            <%#= attachment_image_tag @image, :image, :fill, 100, 100, class: "img-circle pull-left profile-thumb"%>
+            <%#= f.attachment_field :image, placeholder: "Image", class: "user-edit-form" %>
+        </div>
     </div>
   <!-- 商品名 -->
   <div class="form-group has-icon">
@@ -22,10 +25,10 @@
 		<span class="caret"></span>
 	</button>
 	<ul class="dropdown-menu" role="menu">
-		<li role="presentation"><a href="#">ケーキ</a></li>
-		<li role="presentation"><a href="#">プリン</a></li>
-		<li role="presentation"><a href="#">焼き菓子</a></li>
-		<li role="presentation"><a href="#">キャンディ</a></li>
+		<li role="presentation"><a role="menuitem" tabindex="-1" href="#">ケーキ</a></li>
+		<li role="presentation"><a role="menuitem" tabindex="-1" href="#">プリン</a></li>
+		<li role="presentation"><a role="menuitem" tabindex="-1" href="#">焼き菓子</a></li>
+		<li role="presentation"><a role="menuitem" tabindex="-1" href="#">キャンディ</a></li>
 	</ul>
 </div>
 <!-- 税抜価格 -->
@@ -39,8 +42,8 @@
 		<span class="caret"></span>
 	</button>
 	<ul class="dropdown-menu" role="menu">
-		<li role="presentation"><a href="#">販売中</a></li>
-		<li role="presentation"><a href="#">品切れ</a></li>
+		<li role="presentation"><a role="menuitem" tabindex="-1" href="#">販売中</a></li>
+		<li role="presentation"><a role="menuitem" tabindex="-1" href="#">販売停止中</a></li>
 	</ul>
 </div>
 
