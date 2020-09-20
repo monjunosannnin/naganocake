@@ -3,7 +3,7 @@
     <p class="col-xs-3 col-xs-offset-2">管理者ログイン</p>
   <% elsif request.fullpath == admins_root_path %>
     <p class="col-xs-3 col-xs-offset-2">管理者画面</p>
-  <% elsif request.fullpath == edit_admins_genre_path(current_admin.id) %>
+  <%# elsif request.fullpath == edit_admins_genre_path(current_admin.id) %>
     <p class="col-xs-3 col-xs-offset-2">ジャンル編集</p>
   <% elsif request.fullpath == admins_genres_path %>
     <p class="col-xs-3 col-xs-offset-2">ジャンル一覧・追加</p>
