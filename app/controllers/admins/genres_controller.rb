@@ -4,6 +4,7 @@ class Admins::GenresController < ApplicationController
   def index
     @genre = Genre.new
     @genres = Genre.all
+    @page_title = "ジャンル一覧・追加"
   end
 
   def create
@@ -14,6 +15,7 @@ class Admins::GenresController < ApplicationController
 
   def edit
     @genre = Genre.find(params[:id])
+    @page_title = "ジャンル編集"
   end
 
   def update
