@@ -11,7 +11,7 @@
     <p class="col-xs-3 col-xs-offset-2">会員一覧</p>
   <% elsif request.fullpath == @page %>
     <p class="col-xs-3 col-xs-offset-2">会員一覧</p>
-  <% elsif request.fullpath == admins_customer_path %>
+  <%# elsif request.fullpath == admins_customer_path %>
     <p class="col-xs-3 col-xs-offset-2"><%= @customer_name %>さんの会員詳細</p>
   <% elsif request.fullpath == edit_admins_customer_path %>
     <p class="col-xs-3 col-xs-offset-2"><%= @customer_name %>さんの会員情報編集
