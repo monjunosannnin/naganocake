@@ -11,12 +11,12 @@
     <% @orders.each do |o| %>
       <tr>
         <td>
-          <%= link_to admins_customer_path(o.customer_id) do %>
+          <%= link_to admins_order_path(o.customer_id) do %>
             <%= l o.created_at %>
           <% end %>
         </td>
         <td><%= o.customer.kanji_familyname + o.customer.kanji_firstname %></td>
-        <td><%= quantity_total[i] %>
+        <td><%= @quantity_total[o.id - 1] %>
         </td>
         <td><%= o.status %></td>
       </tr>

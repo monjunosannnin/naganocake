@@ -3,23 +3,23 @@
 class Admins::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
 
-  GET /resource/sign_in
+  # GET /admins/sign_in
   def new
-    super
     @page_title = "管理者ログイン"
+    super
   end
 
-  POST /resource/sign_in
-  def create
-    super
-    @page_title = "管理者画面"
-  end
+  # POST /admins/sign_in
+  # def create
+  #   super
+  # end
 
   # DELETE /resource/sign_out
   # def destroy
   #   super
   # end
 
+  private
   def after_sign_in_path_for(resource)
     admins_root_path
   end

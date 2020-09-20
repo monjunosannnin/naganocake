@@ -8,27 +8,31 @@ class Admins::OrdersController < ApplicationController
     i = 0
 
     @orders.each do |o|
-      @order_products = o.order_products
+      @order_products = o.ordered_products
       quantity = 0
-      quantity_total = 0
 
       @order_products.each do |op|
-        quantity = @quantity + @order_products.quantity
+        quantity = quantity + op.quantity
       end
-
+      
       quantity_total[i] = quantity
       i += 1
     end
-
-    @quantity_total = 
+    @quantity_total = quantity_total
   end
 
   def show
-    
+    @order = Order.find(params[:id])
+    @ordered_products = @order.ordered_products
+    @customer_name = @order.customer.kanji_familyname + @order.customer.kanji_firstname
+    @page_title = "注文履歴詳細"
+    @total_price = 0
   end
 
   def update
-    
+    @order = Order.find(params[:id])
+    @order.update(order_params)
+    redirect_back fallback_location: admins_root_path
   end
 
   private 

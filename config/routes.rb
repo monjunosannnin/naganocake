@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     resources :genres, only: [ :index, :create, :edit, :update ]
     resources :customers, only: [ :index, :show, :edit, :update ]
     resources :orders, only: [:index, :show, :update]
-    resource :ordered_products, only: [:update]
+    resources :ordered_products, only: [:update]
   end
 
   scope module: :public do
