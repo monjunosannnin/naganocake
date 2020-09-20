@@ -1,3 +1,13 @@
-// Place all the styles related to the admin/orders controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+#order_lists {
+  margin: auto;
+
+  tbody {
+
+    td {
+      border-bottom: 1px solid #adaaaa;
+      padding-top: 15px;
+      padding-right: 80px;
+      padding-bottom: 15px;
+    }
+  }
+}

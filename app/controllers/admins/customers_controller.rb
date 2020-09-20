@@ -3,18 +3,19 @@ class Admins::CustomersController < ApplicationController
 
   def index
     @customers = Customer.all.page(params[:page]).per(10)
-    page = Customer.page(params[:page]).current_page
-    @page = admins_customers_path + "?page=" + page.to_s
+    @page_title = "会員一覧"
   end
 
   def show
     @customer = Customer.find(params[:id])
     @customer_name = @customer.kanji_familyname + @customer.kanji_firstname
+    @page_title = @customer_name + "さんの会員詳細"
   end
 
   def edit
     @customer = Customer.find(params[:id])
     @customer_name = @customer.kanji_familyname + @customer.kanji_firstname
+    @page_title = @customer_name + "さんの会員情報編集"
   end
 
   def update
