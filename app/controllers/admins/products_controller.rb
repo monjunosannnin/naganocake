@@ -14,9 +14,12 @@ class Admins::ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
-    @product.save
-    redirect_to admins_product_path(@product)
-    flash[:notice] = 'new product was successfully created.'
+    if@product.save
+      redirect_to admins_product_path(@product)
+      flash[:notice] = 'new product was successfully created.'
+    else
+       redirect_back(fallback_location: root_path)
+    end
   end
 
   def show

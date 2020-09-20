@@ -4,6 +4,7 @@ class Public::CustomersController < ApplicationController
   end
 
   def edit
+    @customer = Customer.find(params[:id])
   end
 
   def update
@@ -13,6 +14,13 @@ class Public::CustomersController < ApplicationController
   end
 
   def unsubscribe
+    @customer = Customer.find(params[:id])
+    #is_deletedカラムにフラグを立てる(defaultはfalse)
+    @customer.update(is_deleted: true)
+    #ログアウトさせる
+    reset_session
+    flash[:notice] = "ご利用ありがとうございました。またのお越しをお待ちしております。"
+    redirect_to root_path
   end
 
 end
