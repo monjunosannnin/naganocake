@@ -17,5 +17,6 @@ Rails.application.routes.draw do
 
   scope module: :public do
     resources :customers
+    resources :products, only: [ :index, :show ]
   end
 end

@@ -1,0 +1,11 @@
+<h2>ジャンル検索</h2>
+<ul>
+	<% @genres.each do |genre| %>
+		<li><%= link_to genre.name, products_path(genre_id: genre.id) %></li>
+	<% end %>
+</ul>
+
+<%# attachment_image_tag product, :image, :fill, 50, 50, size: '50x50' %>
+<p><%= @product.name %></p>
+<p><%= @product.explanation %></p>
+<p>¥<%= @product.price * 1.08 %>(税込）</p>

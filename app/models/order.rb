@@ -1,6 +1,7 @@
 class Order < ApplicationRecord
   belongs_to :customer
   has_many :ordered_products, foreign_key: 'order_id'
+  has_many :cart_items, dependent: :destroy
 
   enum status: {
     入金待ち: 0,
