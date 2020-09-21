@@ -15,7 +15,7 @@
  */
  @import "bootstrap-sprockets";
  @import "bootstrap";
- 
+
 html, body {
   font-family: "font-kaze";
 }
@@ -59,7 +59,7 @@ main {
   .function {
     padding-top: 50px;
     padding-bottom: 50px;
-    
+
     p {
       width: 300px;
       padding: 10px;
@@ -75,7 +75,7 @@ main {
 
   table {
     margin-top: 50px;
-  
+
     thead {
       background-color: #adaaaa;
     }
@@ -83,7 +83,7 @@ main {
 }
 
 #app_button {
-    
+
   input {
     color: #ffffff;
     background-color: #428dd9;

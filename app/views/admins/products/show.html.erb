@@ -1,0 +1,13 @@
+<%=flash[:notice] %>
+<td>商品詳細</td>
+<%#= attachment_image_tag @product, :product_image , fallback: "no_image.jpeg", size: '100x100'%>
+  <!-- 商品IDを入れる -->
+    <td><%= link_to product.name, admins_product(product.id)%></td>
+    <td><%= product.price %></td>
+    <td><%= product.genre %></td>
+  <% if @product.actived_by?(product) %>
+    <td>販売中</td>
+    <% else %>
+    <td>販売停止中</td>
+  <% end %>
+  <%= f.submit '編集する', edit_admins_product, class: "btn btn-primary btn-sm" %>
