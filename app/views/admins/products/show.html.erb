@@ -1,6 +1,6 @@
 <%=flash[:notice] %>
 <td>商品詳細</td>
-<td><%= attachment_image_tag @product, :product_image , fallback: "no_image.jpeg", size: '100x100'%>
+<%#= attachment_image_tag @product, :product_image , fallback: "no_image.jpeg", size: '100x100'%>
   <!-- 商品IDを入れる -->
     <td><%= link_to product.name, admins_product(product.id)%></td>
     <td><%= product.price %></td>

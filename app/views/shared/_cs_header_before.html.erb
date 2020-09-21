@@ -8,7 +8,11 @@
           <%= button_to "About", about_path, method: :get, class: "btn btn-default navbar-btn" %>
           <%= button_to "商品一覧", "#", method: :get, class: "btn btn-default navbar-btn" %>
           <%= button_to "新規登録", "#", method: :get, class: "btn btn-default navbar-btn" %>
-          <%= button_to "ログイン", "#", method: :get, class: "btn btn-default navbar-btn" %>
+            <% if request.fullpath == new_admin_session_path %>
+        　　　　<%= button_to "ログイン", new_admin_session_path, method: :get, class: "btn btn-default navbar-btn" %>
+            <% else %>
+              <%= button_to "ログイン", new_customer_session_path, method: :get, class: "btn btn-default navbar-btn" %>
+            <% end %>
         </ul>
       </nav>
     </div>

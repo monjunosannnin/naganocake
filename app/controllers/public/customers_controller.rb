@@ -1,20 +1,25 @@
 class Public::CustomersController < ApplicationController
+  # before_action :authenticate_customer!
 
   def show
   end
 
   def edit
-    @customer = Customer.find(params[:id])
   end
 
   def update
+    if @customer.update(customer_params)
+       flash[:notice] = 'It was successfully updated.'
+       redirect_to mypege_path
+    else
+       render :edit
+  end
   end
 
   def withdrawal
   end
 
   def unsubscribe
-    @customer = Customer.find(params[:id])
     #is_deletedカラムにフラグを立てる(defaultはfalse)
     @customer.update(is_deleted: true)
     #ログアウトさせる
@@ -23,4 +28,8 @@ class Public::CustomersController < ApplicationController
     redirect_to root_path
   end
 
-end
+  private
+    def customer_params
+      params.require(:customer).permit(:kanji_familyname, :kanji_firstname, :kana_familyname, :kana_firstname, :email, :postal_code, :address, :telephone_number, :is_deleted)
+    end
+  end
