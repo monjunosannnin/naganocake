@@ -19,5 +19,6 @@ Rails.application.routes.draw do
     resources :customers
     resources :products, only: [ :index, :show ]
     resources :cart_items
+    resources :orders
   end
 end
