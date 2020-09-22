@@ -5,7 +5,7 @@ class Public::ProductsController < ApplicationController
 			@genre = Genre.find(params[:genre_id])
 			@products = Product.where(genre_id: params[:genre_id])
 			@name = @genre.name
-		else 
+		else
 			@genre = Genre.new
 			@name = "商品"
 			@products = Product.all

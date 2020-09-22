@@ -1,39 +1,27 @@
-<h1>商品新規登録</h1>
 <!-- 商品画像 -->
-<div class="form-body">
-<%= form_for(@product) do |f| %>
-  <div class="form-group has-icon">
-    <div class="user-edit-image">
-      <td><%= attachment_image_tag @product, :product_image , fallback: "no_image.jpeg", size: '100x100'%>
-    </div>
-  <!-- 商品名 -->
-  <div class="form-group has-icon">
-    <label>商品名</label>
-    <%= f.text_field :name, autofocus: true, placeholder:"商品名"%>
-  </div>
-  <!-- 商品説明 -->
-  <label>商品説明</label>
-    <label class="control-label sr-only" for="inputEmail"></label>
-        <%= f.text_area :explanation, autofocus: true%>
-<!-- 　ジャンル　 -->
-    <%= f.label :genre_id, 'ジャンル'%>
-    <%= f.collection_select :genre_id, Genre.all, :id, :name, { prompt: '選択してください' }, class: 'form-control' %>
-<!-- 税抜価格 -->
-  <label>税抜価格</label>
-    <%= f.text_field :price, autofocus: true%>
-  </div>
-<!-- 販売ステータス -->
-<div class="dropdown">
-  <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
-    ドロップダウン
-    <span class="caret"></span>
-  </button>
-  <ul class="dropdown-menu" role="menu">
-    <li role="presentation"><a href="#">リンクのリスト１</a></li>
-    <li role="presentation"><a href="#">リンクのリスト２</a></li>
-    <li role="presentation"><a href="#">リンクのリスト３</a></li>
-  </ul>
-</div>
+<%= form_with model: @product, url: admins_products_path(@product.id), local: true do |f| %>
+	<div class="user-edit-image">
+		<%# attachment_image_tag @image, :image, :fill, 100, 100, class: "img-circle pull-left profile-thumb"%>
+		<%= f.attachment_field :image, placeholder: "Image" %>
+	</div>
 
-<%= f.submit '変更を保存',class: "btn btn-primary btn-sm" %>
+	<!-- 商品名 -->
+    <label>商品名</label>
+	<%= f.text_field :name, autofocus: true, placeholder:"商品名"%>
+
+	<!-- 商品説明 -->
+	<label>商品説明</label>
+	<%= f.text_area :explanation, autofocus: true%>
+
+	<!-- 　ジャンル　 -->
+	<%= f.select :genre_id, @genres,{},{class: "select" } %>
+
+	<!-- 税抜価格 -->
+	<label>税抜価格</label>
+	<%= f.text_field :price, autofocus: true%>
+
+	<!-- 販売ステータス -->
+	<label>販売ステータス</label>
+	<%= f.select :is_active, {'販売中': true, '販売停止中': false}, { class: 'form-control' , required: true } %>
+	<%= f.submit '変更を保存',class: "btn btn-primary btn-lg" %>
 <% end %>
