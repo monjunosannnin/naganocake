@@ -23,28 +23,29 @@ class Public::CartItemsController < ApplicationController
 	def update
 		@cart_item = CartItem.find(params[:id])
 		@cart_item.update(cart_item_params)
-		redirect_to request.referer
+		redirect_to cart_items_path
 	end
 
 	def index
-		@cart_items = CartItem.all
-		@cart_item = CartItem.find(params[:id])
+		@cart_items = set_customer.cart_items.all
+		@total_price = 0
 	end
 
 	def destroy
+		@cart_item = CartItem.find(params[:id])
+		@cart_item.destroy
+		redirect_to cart_items_path
 	end
 
 	def destroy_all
+		set_customer.cart_items.destroy_all
+		redirect_to cart_items_path
 	end
 
 	private
 
 	def set_customer
 		@customer = current_customer
-	end
-	
-	def set_cart_item
-		@cart_item = CartItem.find(params[:id])
 	end
 
 	def cart_item_params
