@@ -30,7 +30,6 @@ li {
 }
 
 .header-logo {
-  font-family: "font-kaze";
   height: 50px;
   font-size: 30px;
   color: #ffffff;
@@ -46,6 +45,12 @@ li {
     margin-left: 20px;
   }
 }
+
+  .cs-name {
+    font-size: 16px;
+    color: #ffffff;
+    padding-top: 20px;
+  }
 
 main {
   padding-top: 70px;

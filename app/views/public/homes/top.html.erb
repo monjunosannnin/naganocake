@@ -18,7 +18,7 @@
       <h3>オススメ商品</h3>
         <% @random.each do |product|%>
         <tr>
-          <%#= attachment_image_tag product, :image, fallback: "no_image.jpeg", size: '100x100'%>
+          <%#= attachment_image_tag product, :image, :fill, 100, 100%>
           <td><%= link_to product.name, product_path(product.id) %></td>
           <td>￥<%= (product.price*1.1).to_i %></td>
         </tr>
@@ -27,3 +27,4 @@
     </div>
   </div>
 </div>
+<%= render "shared/footer" %>
