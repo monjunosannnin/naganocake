@@ -1,12 +1,20 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-9">
-            <h1>注文情報入力</h1>
+            <div class="row">
+                <h1>注文情報入力</h1>
+            </div>
             <%= form_with(model: @order, local: true, url: {action: 'confirm'} ) do |f| %>
-                <h3><strong>支払方法</strong></h3>
-                    <p><%= f.radio_button :payment_method, 0, checked: true %>クレジットカード</p>
-                    <p><%= f.radio_button :payment_method, 1 %>銀行振込</p>
-                <h3><strong>お届け先</strong></h3>
+                <div class ="row">
+                    <h3><strong>支払方法</strong></h3>
+                </div>
+                <div class="row">
+                    <p><%= f.radio_button :payment_method, :クレジットカード, checked: true %>クレジットカード</p>
+                    <p><%= f.radio_button :payment_method, :銀行振込, checked: true %>銀行振込</p>
+                </div>
+                <div class="row">
+                    <h3><strong>お届け先</strong></h3>
+                </div>
                     <p>
                         <%= f.radio_button :add, 1 , checked: true %>ご自身の住所<br>
                         <%= @customer.postal_code %>
@@ -20,13 +28,13 @@
                     <%= f.radio_button :add, 3 %>新しいお届け先<br>
                     <div class="row">
                         <div class="col-lg-12">
-                            <%= f.fields_for :new_address do |o| %>
+                            <%= f.fields_for :new_address do |na| %>
                                 <div class="row">
                                     <div class="col-lg-3">
                                         <strong>郵便番号(ハイフンなし)</strong>
                                     </div>
                                     <div class="col-lg-6">
-                                        <%= o.text_field :postal_code %>
+                                        <%= na.text_field :postal_code %>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -34,21 +42,21 @@
                                         <strong>住所</strong>
                                     </div>
                                     <div class="col-lg-6">
-                                        <%= o.text_field :address %>
+                                        <%= na.text_field :address %>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-3">
-                                      <strong>宛名</strong>
+                                    <strong>宛名</strong>
                                     </div>
                                     <div class="col-lg-6">
-                                        <%= o.text_field :name %>
+                                        <%= na.text_field :name %>
                                     </div>
                                 </div>
                             <% end %>
                         </div>
                     </div>
-                <h2><%= f.submit "確認画面へ進む" %></h2>
+                <h2><%= f.submit "確認画面へ進む", class: "btn btn-danger" %></h2>
             <% end %>
         </div>
     </div>
