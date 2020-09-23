@@ -26,6 +26,7 @@ Rails.application.routes.draw do
     get '/customers/mypage/withdrawal' => 'customers#withdrawal', as: 'customers_withdrawal'
     put '/customers/mypage/unsubscribe' => 'customers#unsubscribe', as: 'customers_unsubscribe'
     delete '/cart_items/destroy_all' => 'cart_items#destroy_all'
+    post '/orders/confirm' => 'orders#confirm'
     resources :customers
     resources :products, only: [ :index, :show ]
     resources :cart_items
