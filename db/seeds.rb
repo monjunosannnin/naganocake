@@ -105,13 +105,19 @@ product_select = Array.new
 quantity = Array.new
 ordered_product_price = Array.new
 total_price = Array.new
-
+count = 0
 60.times do |n|
   product_select[n] = Random.rand(12) + 1
   quantity[n] = Random.rand(6) + 1
 
   ordered_product_price[n] = (Product.find(product_select[n]).price * 1.1).to_i
-  total_price[n] = Product.find(product_select[n]).price * quantity[n]
+end
+
+#total_price
+30.times do |n|
+  total_price[n] = Product.find(product_select[count]).price * quantity[count] + Product.find(product_select[count + 1]).price * quantity[count + 1]
+
+  count += 1
 end
 
 
@@ -131,12 +137,14 @@ end
     shipping_cost: 800,
     status: ((i + 1) % 4).to_i
   )
+
+  count += 1
 end
 
 # order_product
 60.times do |n|    
   OrderedProduct.create!(
-    order_id: Order.find((n % 2) + 1).id,
+    order_id: Order.find((n / 2) + 1).id,
     product_id: Product.find(product_select[n]).id,
     quantity: quantity[n],
     status: (product_select[n] % 3).to_i,
