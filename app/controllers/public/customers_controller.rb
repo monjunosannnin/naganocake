@@ -2,9 +2,11 @@ class Public::CustomersController < ApplicationController
   # before_action :authenticate_customer!
 
   def show
+    @customer = Customer.find(customer_params)
   end
 
   def edit
+    @customer = Customer.find(customer_params)
   end
 
   def update
@@ -13,6 +15,7 @@ class Public::CustomersController < ApplicationController
        redirect_to mypege_path
     else
        render :edit
+       @customer = Customer.find(customer_params)
   end
   end
 
@@ -20,9 +23,7 @@ class Public::CustomersController < ApplicationController
   end
 
   def unsubscribe
-    #is_deletedカラムにフラグを立てる(defaultはfalse)
     @customer.update(is_deleted: true)
-    #ログアウトさせる
     reset_session
     flash[:notice] = "ご利用ありがとうございました。またのお越しをお待ちしております。"
     redirect_to root_path

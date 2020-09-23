@@ -1,27 +1,42 @@
-<!-- 商品画像 -->
-<%= form_with model: @product, url: admins_products_path(@product.id), local: true do |f| %>
-	<div class="user-edit-image">
-		<%# attachment_image_tag @image, :image, :fill, 100, 100, class: "img-circle pull-left profile-thumb"%>
-		<%= f.attachment_field :image, placeholder: "Image" %>
-	</div>
+<div class="row">
+  <div class="col-md-4 col-md-offset-5">
+		<!-- 商品画像 -->
+		<form>
+			<%= form_with model: @product, url: admins_product_path(@product.id), local: true do |f| %>
+				<%= attachment_image_tag @product, :image, fallback: "no_image.jpeg", size: '100x100'%>
+				<%= f.attachment_field :image, placeholder: "Image" %>
 
-	<!-- 商品名 -->
-    <label>商品名</label>
-	<%= f.text_field :name, autofocus: true, placeholder:"商品名"%>
+				<!-- 商品名 -->
+				<div class="form-group">
+				<%= f.label :name, "商品名"%>
+				<%= f.text_field :name, autofocus: true, placeholder:"商品名"%>
+				</div>
 
-	<!-- 商品説明 -->
-	<label>商品説明</label>
-	<%= f.text_area :explanation, autofocus: true%>
+				<!-- 商品説明 -->
+				<div class="form-group">
+				<%= f.label :explanation, "商品説明"%>
+				<%= f.text_area :explanation, autofocus: true%>
+				</div>
 
-	<!-- 　ジャンル　 -->
-	<%= f.select :genre_id, @genres,{},{class: "select" } %>
+				<!-- 　ジャンル　 -->
+				<div class="form-group">
+				<%= f.label :genre, "ジャンル"%>
+				<%= f.select :genre_id, @genres,{},{class: "select" } %>
+				</div>
 
-	<!-- 税抜価格 -->
-	<label>税抜価格</label>
-	<%= f.text_field :price, autofocus: true%>
+				<!-- 税抜価格 -->
+				<div class="form-group">
+				<%= f.label :price, "税抜価格"%>
+				<%= f.text_field :price, autofocus: true%>
+				</div>
 
-	<!-- 販売ステータス -->
-	<label>販売ステータス</label>
-	<%= f.select :is_active, {'販売中': true, '販売停止中': false}, { class: 'form-control' , required: true } %>
-	<%= f.submit '変更を保存',class: "btn btn-primary btn-lg" %>
-<% end %>
+				<!-- 販売ステータス -->
+				<div class="form-group">
+				<%= f.label :is_active, "販売ステータス"%>
+				<%= f.select :is_active, {'販売中': true, '販売停止中': false}, { class: 'form-control' , required: true } %>
+				</div>
+				<%= f.submit '変更を保存',class: "btn btn-primary btn-lg" %>
+			<% end %>
+        <form>
+  </div>
+</div>

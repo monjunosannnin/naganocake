@@ -1,14 +1,29 @@
-<div class="main-container">
-  <div class="cover">
-    <div class="main-text">
-	  <li>ようこそ、NaganoCakeへ！</li>
-	  <li>このサイトは、ケーキ販売のECサイトになります。</li>
-	  <li>会員でない方も商品の閲覧はできますが、<br>
-	      購入には会員登録が必要になります。
-	  </li>
-	  <img src="/assets/cakes.jpg" alt="" width="600" height="500">
+<div class="container">
+  <div class="row">
+    <h2>ジャンル検索</h2>
+      <ul>
+        <% @genres.each do |genre| %>
+          <li><%= link_to genre.name, products_path(genre_id: genre.id) %></li>
+        <% end %>
+      </ul>
+    <div class="col-md-5 col-md-offset-3">
+      <div class="main-text">
+        <li>ようこそ、NaganoCakeへ！</li>
+        <li>このサイトは、ケーキ販売のECサイトになります。</li>
+        <li>会員でない方も商品の閲覧はできますが、<br>
+            購入には会員登録が必要になります。
+        </li>
+      </div>
+      <img src="/assets/cakes.jpg" alt="" width="450" height="350">
+      <h3>オススメ商品</h3>
+        <% @random.each do |product|%>
+        <tr>
+          <%#= attachment_image_tag product, :image, fallback: "no_image.jpeg", size: '100x100'%>
+          <td><%= link_to product.name, product_path(product.id) %></td>
+          <td>￥<%= (product.price*1.1).to_i %></td>
+        </tr>
+        <% end %>
+        <%= link_to  "もっと見る＞", products_path %>
     </div>
-    <h3>オススメ商品</h3>
-    <% end %>
   </div>
 </div>

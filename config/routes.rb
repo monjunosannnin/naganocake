@@ -23,6 +23,7 @@ Rails.application.routes.draw do
     get 'top' => 'homes#top'
     get 'about' => 'homes#about'
     get '/customers' => 'customers#show',as: 'mypage'
+    get '/customers/edit' => 'customers#edit',as: 'edit'
     get '/customers/mypage/withdrawal' => 'customers#withdrawal', as: 'customers_withdrawal'
     put '/customers/mypage/unsubscribe' => 'customers#unsubscribe', as: 'customers_unsubscribe'
     delete '/cart_items/destroy_all' => 'cart_items#destroy_all'

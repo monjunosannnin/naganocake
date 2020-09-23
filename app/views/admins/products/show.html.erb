@@ -3,7 +3,7 @@
   <thead>
       <tr>
         <th>商品名</th>
-        <th>税抜価格</th>
+        <th>税抜価格(税込価格)</th>
         <th>ジャンル</th>
         <th>ステータス</th>
       </tr>
@@ -11,12 +11,12 @@
   <tr>
   <%= attachment_image_tag @product, :image , fallback: "no_image.jpeg", size: '100x100'%>
     <td><%= @product.name%></td>
-    <td><%= @product.price %></td>
+    <td><%= @product.price %>（<%= (@product.price*1.1).to_i %>）円</td>
     <td><%= @product.genre.name %></td>
       <% if @product.is_active == true %>
-      <td>販売中</td>
+        <td>販売中</td>
       <% else %>
-      <td>販売停止中</td>
+        <td>販売停止中</td>
       <% end %>
     <td><%= link_to '編集する', edit_admins_product_path(@product), class: "btn btn-primary btn-lg" %></td>
   </tr>

@@ -1,7 +1,6 @@
 class Admins::ProductsController < ApplicationController
-
-  # before_action :authenticate_admin!
-  before_action :set_product, only: [:show, :edit]
+  before_action :authenticate_admin!
+  before_action :set_product, only: [:show, :edit, :update]
 
   def index
     @products = Product.all.page(params[:page]).per(10)
@@ -34,7 +33,6 @@ class Admins::ProductsController < ApplicationController
   end
 
   def update
-      @product = Product.find(params[:id])
     if@product.update(product_params)
       flash[:notice] = 'It was successfully updated.'
       redirect_to admins_product_path(@product.id)
