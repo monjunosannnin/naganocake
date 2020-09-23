@@ -7,141 +7,152 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-# 1件目
+# シードデータ
+# admin
 Admin.create!(
-	email: 'test_admin@gmail.com',
-	password: 'testadmin'
+	email: "test_admin@gmail.com",
+	password: "password"
 )
 
-Customer.create!(
-  kanji_familyname: '北垣',
-  kanji_firstname: '健介',
-  kana_familyname: 'キタガキ',
-  kana_firstname: 'ケンスケ',
-  email: 'test_customer@gmail.com',
-  password: 'testcustomer',
-  telephone_number: '00000000000',
-  postal_code: '1000003',
-  address: '東京都千代田区一ツ橋',
-  is_deleted: false
-)
+# customer
+familynames = %w{
+  佐藤:サトウ:sato
+  鈴木:スズキ:suzuki
+  高橋:タカハシ:takahasi
+  田中:タナカ:tanaka
+}
 
-Genre.create!(
-  name: 'プリン',
-  is_active: true
-)
+givennames = %w{
+  太郎:タロウ:taro
+  二郎:ジロウ:jiro
+  三郎:サブロウ:saburo
+  花子:ハナコ:hanako
+  松子:マツコ:matuko
+}
 
-Order.create!(
-  customer_id: Customer.find(1).id,
-  payment_method: 0,
-  billing_amount: 1900,
-  name: '北垣健介',
-  postal_code: '1000002',
-  address: '東京都千代田区皇居外縁',
-  shipping_cost: 800,
-  status: 0
-)
+20.times do |n|
+  i = n + 1
+  fn = familynames[n % 4].split(":")
+  gn = givennames[n % 5].split(":")
 
-Delivery.create!(
-  customer_id: Customer.find(1).id,
-  name: '北垣健介',
-  postal_code: '1000002',
-  address: '東京都千代田区皇居外縁'
-)
+  Customer.create!(
+    kanji_familyname: fn[0],
+    kanji_firstname: gn[0],
+    kana_familyname: fn[1],
+    kana_firstname: gn[1],
+    email: "#{fn[2]}_#{gn[2]}@gmail.com",
+    password: "password",
+    telephone_number: (100000000000 - i).to_s,
+    postal_code: (1000000 + i).to_s,
+    address: "東京都千代田区",
+    is_deleted: [true, false].sample
+  )
+end
 
-Product.create!(
-  genre_id: Genre.find(1).id,
-  name: "パフェ",
-  explanation: "美味しいです",
-  image_id: File.open('./app/assets/images/test.jpg'),
-  price: 1000,
-  is_active: true
-)
+# delivery
+30.times do |n|
+  i = Random.rand(20) + 1
+  fn = familynames[i % 4].split(":")
+  gn = givennames[i % 5].split(":")
+  
+  Delivery.create!(
+    customer_id: Customer.find(i).id,
+    name: fn + gn,
+    postal_code: (1000000 + i).to_s,
+    address: "東京都千代田区",
+  )
+end
 
-OrderedProduct.create!(
-  order_id: Order.find(1).id,
-  product_id: Product.find(1).id,
-  quantity: 1,
-  status: 0,
-  price: 1100
-)
+# genre
+genre_names = %w{
+  プリン
+  ケーキ
+  マカロン
+  シュークリーム
+}
 
-OrderedProduct.create!(
-  order_id: Order.find(1).id,
-  product_id: Product.find(1).id,
-  quantity: 1,
-  status: 0,
-  price: 1100
-)
+4.times do |n|
+  Genre.create!(
+    name: genre_names[n],
+    is_active: [true, false].sample
+  )
+end
 
-CartItem.create!(
-  customer_id: Customer.find(1).id,
-  product_id: Product.find(1).id,
-  quantity: 5
-)
+# product
+product_types = %w{
+  バニラ
+  チョコレート
+  抹茶
+}
 
-Admin.create!(
-	email: 'test_admin2@gmail.com',
-	password: 'testadmin2'
-)
+12.times do |n|
+  i = Random.rand(20) + 1
+  pt = product_types[n % 3]
+  gn = genre_names[n % 4]
+  
+  Product.create!(
+    genre_id: Genre.find(((n % 3) + 1).to_i).id,
+    name: pt + gn,
+    explanation: "美味しいです",
+    image_id: File.open("./app/assets/images/test.jpg"),
+    price: (i.to_s + "00").to_i,
+    is_active: [true, false].sample
+  )
+end
 
-#2件目
+# price calculation
+product_select = Array.new
+quantity = Array.new
+ordered_product_price = Array.new
+total_price = Array.new
 
-Customer.create!(
-  kanji_familyname: '武田',
-  kanji_firstname: '要',
-  kana_familyname: 'タケダ',
-  kana_firstname: 'カナメ',
-  email: 'test_customer2@gmail.com',
-  password: 'testcustomer2',
-  telephone_number: '00000000001',
-  postal_code: '1000005',
-  address: '東京都千代田区丸の内',
-  is_deleted: false
-)
+60.times do |n|
+  product_select[n] = Random.rand(12) + 1
+  quantity[n] = Random.rand(6) + 1
 
-Genre.create!(
-  name: 'ケーキ',
-  is_active: true
-)
+  ordered_product_price[n] = (Product.find(product_select[n]).price * 1.1).to_i
+  total_price[n] = Product.find(product_select[n]).price * quantity[n]
+end
 
-Order.create!(
-  customer_id: Customer.find(2).id,
-  payment_method: 0,
-  billing_amount: 1900,
-  name: '武田要',
-  postal_code: '1000005',
-  address: '東京都千代田区丸の内',
-  shipping_cost: 800,
-  status: 0
-)
 
-Delivery.create!(
-  customer_id: Customer.find(2).id,
-  name: '武田要',
-  postal_code: '1000005',
-  address: '東京都千代田区丸の内'
-)
+# order
+30.times do |n|
+  i = Random.rand(20)
+  fn = familynames[i % 4].split(":")
+  gn = givennames[i % 5].split(":")
 
-Product.create!(
-  genre_id: Genre.find(2).id,
-  name: "チーズケーキ",
-  explanation: "美味しいです",
-  image_id: File.open('./app/assets/images/test.jpg'),
-  price: 1000,
-  is_active: true
-)
+  Order.create!(
+    customer_id: Customer.find(i + 1).id,
+    payment_method: Random.rand(2),
+    billing_amount: total_price[n],
+    name: fn[0] + gn[0],
+    postal_code: (1000000 + i).to_s,
+    address: "東京都千代田区",
+    shipping_cost: 800,
+    status: ((i + 1) % 4).to_i
+  )
+end
 
-OrderedProduct.create!(
-  order_id: Order.find(2).id,
-  product_id: Product.find(2).id,
-  quantity: 1,
-  status: 0,
-  price: 1100
-)
+# order_product
+60.times do |n|    
+  OrderedProduct.create!(
+    order_id: Order.find((n % 2) + 1).id,
+    product_id: Product.find(product_select[n]).id,
+    quantity: quantity[n],
+    status: (product_select[n] % 3).to_i,
+    price: ordered_product_price[n]
+  )
+end
 
-CartItem.create!(
-  customer_id: Customer.find(2).id,
-  product_id: Product.find(2).id,
-  quantity: 3
-)
+# cart_item
+30.times do |n|
+  i = Random.rand(12) + 1
+  quantity = Random.rand(6)
+  customer = Random.rand(20) + 1
+  
+  CartItem.create!(
+    customer_id: Customer.find(customer).id,
+    product_id: Product.find(i).id,
+    quantity: quantity,
+  )
+end
