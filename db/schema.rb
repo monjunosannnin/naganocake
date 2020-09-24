@@ -69,6 +69,7 @@ ActiveRecord::Schema.define(version: 2020_09_18_061011) do
     t.boolean "is_active", default: true, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_genres_on_name", unique: true
   end
 
   create_table "ordered_products", force: :cascade do |t|
