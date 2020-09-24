@@ -17,9 +17,9 @@
                 </div>
                     <p>
                         <%= f.radio_button :add, 1 , checked: true %>ご自身の住所<br>
-                        <%= @customer.postal_code %>
-                        <%= @customer.address %>
-                        <%= @customer.kanji_familyname + @customer.kanji_firstname %>
+                        <%= @order.postal_code %>
+                        <%= @order.address %>
+                        <%= @order.name  %>
                     </p>
                     <p>
                     <%= f.radio_button :add, 2 %>登録住所から選択<br>
