@@ -1,4 +1,4 @@
-<%= form_with model: @genre, url: admins_genres_path, class: "genre_form" do |f| %>
+<%= form_with model: @genre, url: admins_genres_path, id: "genre_form" do |f| %>
   <%= render "form", genre: @genre, f: f %>
 
   <div class="actions" id="app_button">
