@@ -25,7 +25,9 @@
             無効
           <% end %>
         </td>
-        <td  id="app_button"><%= button_to "編集する", edit_admins_genre_path(g.id), method: :get, class: "btn btn-default navbar-btn" %></td>
+        <td  id="app_button">
+          <%= link_to "編集する", edit_admins_genre_path(g.id), class: "btn btn-default navbar-btn", id: "app_link" %>
+        </td>
       </tr>
     <% end %>
   </tbody>

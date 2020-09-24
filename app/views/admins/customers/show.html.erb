@@ -44,8 +44,8 @@
   </table>
 
   <div id=app_button>
-    <%= button_to "編集する", edit_admins_customer_path, method: :get, class: "btn btn-default navbar-btn" %>
+    <%= link_to "編集する", edit_admins_customer_path, class: "btn btn-default navbar-btn", id: "app_link" %>
 
-    <%= button_to "注文履歴一覧を見る", edit_admins_customer_path, method: :get, class: "btn btn-default navbar-btn" %>
+    <%= link_to "注文履歴一覧を見る", edit_admins_customer_path, class: "btn btn-default navbar-btn", id: "app_link" %>
   </div>
 </div>
