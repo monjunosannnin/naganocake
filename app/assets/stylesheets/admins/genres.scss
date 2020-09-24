@@ -1,6 +1,8 @@
-.genre_form {
+#genre_form {
   display: flex;
   align-items: center;
+  justify-content: center;
+  margin-bottom: 50px;
 
   .field {
     margin-right: 30px;
@@ -12,6 +14,7 @@
 }
 
 #genre_lists {
+  margin: auto;
 
   thead {
     
