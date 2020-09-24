@@ -10,37 +10,29 @@
      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   </head>
 <body>
-  <% if admin_signed_in? %>
+<% if admin_signed_in? %>
 <!-- 管理者画面のヘッダー -->
   <%= render "shared/header" %>
-      <main>
-        <div class="container">
-          <%= render "shared/function" %>
-        </div>
-      </main>
-  <% elsif customer_signed_in? %>
-<!-- 顧客側　ログイン後 -->
-     <%= render "shared/cs_header" %>
-      <main>
-          <div class="container">
-          </div>
-      </main>
-  <% else %>
-<!-- 顧客側　ログインなし -->
-      <%= render "shared/cs_header_before" %>
-      <main>
-          <div class="container">
-          </div>
-      </main>
-  <% end %>
-<%= yield %>
-<footer>
-  <div class="container">
-    <div class="row">
-        <div class="col-xs-3 col-xs-offset-9">
-        </div>
+  <main>
+    <div class="container">
+      <%= render "shared/function" %>
     </div>
-  </div>
-</footer>
+  </main>
+<% elsif customer_signed_in? %>
+<!-- 顧客側　ログイン後 -->
+    <%= render "shared/cs_header" %>
+    <main>
+        <div class="container">
+        </div>
+    </main>
+<% else %>
+<!-- 顧客側　ログインなし -->
+    <%= render "shared/cs_header_before" %>
+    <main>
+      <div class="container">
+      </div>
+    </main>
+<% end %>
+<%= yield %>
 </body>
 </html>

@@ -1,51 +1,42 @@
-<h1>商品新規登録</h1>
+<div class="row">
+  <div class="col-md-4 col-md-offset-5">
 <!-- 商品画像 -->
-<div class="form-body">
-  <div class="form-group has-icon">
-    <div class="user-edit-image">
-    	<%= form_with url:new_admins_product_path do |f| %>
-		 <div class="user-edit-image">
-            <%#= attachment_image_tag @image, :image, :fill, 100, 100, class: "img-circle pull-left profile-thumb"%>
-            <%#= f.attachment_field :image, placeholder: "Image", class: "user-edit-form" %>
-        </div>
-    </div>
-  <!-- 商品名 -->
-  <div class="form-group has-icon">
-    <label>商品名</label>
-    <%= f.text_field :name, autofocus: true, placeholder:"商品名"%>
-  </div>
-  <!-- 商品説明 -->
-  <label>商品説明</label>
-	  <label class="control-label sr-only" for="inputEmail"></label>
-	      <%= f.text_area :explanation, autofocus: true%>
-<!-- 　ジャンル　 -->
-<div class="dropdown">
-	<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
-		ジャンル
-		<span class="caret"></span>
-	</button>
-	<ul class="dropdown-menu" role="menu">
-		<li role="presentation"><a role="menuitem" tabindex="-1" href="#">ケーキ</a></li>
-		<li role="presentation"><a role="menuitem" tabindex="-1" href="#">プリン</a></li>
-		<li role="presentation"><a role="menuitem" tabindex="-1" href="#">焼き菓子</a></li>
-		<li role="presentation"><a role="menuitem" tabindex="-1" href="#">キャンディ</a></li>
-	</ul>
-</div>
-<!-- 税抜価格 -->
-  <label>税抜価格</label>
-    <%= f.text_field :price, autofocus: true%>
-  </div>
-<!-- 販売ステータス -->
-<div class="dropdown">
-	<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
-		販売ステータス
-		<span class="caret"></span>
-	</button>
-	<ul class="dropdown-menu" role="menu">
-		<li role="presentation"><a role="menuitem" tabindex="-1" href="#">販売中</a></li>
-		<li role="presentation"><a role="menuitem" tabindex="-1" href="#">販売停止中</a></li>
-	</ul>
-</div>
+		<%= form_with model: @product, url: admins_products_path(@product.id),method: :post, local: true do |f| %>
+			<div class="form-group">
+				<%#= attachment_image_tag @image, :image, :fill, 100, 100 %>
+				<%= f.attachment_field :image, placeholder: "Image" %>
+			</div>
 
-<%= f.submit '新規登録',class: "btn btn-primary btn-sm" %>
-<% end %>
+			<!-- 商品名 -->
+			<div class="form-group">
+			<%= f.label :name, "商品名"%>
+			<%= f.text_field :name, autofocus: true, placeholder:"商品名"%>
+			</div>
+
+			<!-- 商品説明 -->
+			<div class="form-group">
+			<%= f.label :explanation, "商品説明"%>
+			<%= f.text_area :explanation, autofocus: true%>
+			</div>
+
+			<!-- 　ジャンル　 -->
+			<div class="form-group">
+			<%= f.label :genre, "ジャンル"%>
+			<%= f.select :genre_id, @genres,{},{class: "select" } %>
+			</div>
+
+			<!-- 税抜価格 -->
+			<div class="form-group">
+			<%= f.label :price, "税抜価格"%>
+			<%= f.text_field :price, autofocus: true%>
+			</div>
+
+			<!-- 販売ステータス -->
+			<div class="form-group">
+			<%= f.label :is_active, "販売ステータス"%>
+			<%= f.select :is_active, {'販売中': true, '販売停止中': false}, { class: 'form-control' , required: true } %>
+			</div>
+			<%= f.submit '新規登録',class:"btn btn-primary btn-lg" %>
+		<% end %>
+  </div>
+</div>
