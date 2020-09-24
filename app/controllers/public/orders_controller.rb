@@ -9,6 +9,8 @@ class Public::OrdersController < ApplicationController
 	def confirm
 		@order = Order.new
 		@cart_items = current_customer.cart_items
+		@customer = current_customer
+		@total_price = 0
 		@order.payment_method = params[:order][:payment_method].to_i
 		@add = params[:order][:add].to_i
 		case @add
@@ -57,24 +59,24 @@ class Public::OrdersController < ApplicationController
 			  @delivery.customer_id = current_customer.id
 			  @delivery.save
 			end
-			@customer.ordered_products.each do |ordered_product|
+			@customer.cart_items.each do |cart_item|
 			  ordered_product = @order.ordered_products.build
 			  ordered_product.order_id = @order.id
 			  ordered_product.product_id = cart_item.product_id
 			  ordered_product.quantity = cart_item.quantity
 			  ordered_product.price = cart_item.product.price 
 			  ordered_product.save
-
 			  cart_item.destroy 
 			end
 	  
-			render 'homes/thanks'
+			redirect_to thanks_path
 		else
-			redirect_to customer_top_path, danger: 'カートが空です。'
+			redirect_to products_path, danger: 'カートが空です。'
 		end
 	end
 
 	def index
+		
 	end
 
 	def show
