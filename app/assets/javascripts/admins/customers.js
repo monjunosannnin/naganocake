@@ -1,7 +1,6 @@
 $(function() {
   $("#customer_is_deleted").change(function() {
     var active = $("#customer_is_deleted").prop("checked");
-    console.log('hoge');
     
     if (active) {
       $("#passive").prop("checked", false);
@@ -14,7 +13,6 @@ $(function() {
 
   $("#passive").change(function() {
     var passive = $("#passive").prop("checked");
-    console.log('foo');
     
     if (passive) {
       $("#passive").prop("checked", true);
