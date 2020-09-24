@@ -16,13 +16,13 @@
 
     <h4>住所</h4><%= @customer.address %>
 
-    <h4>電話番号</h4><%#= @cutomer.telephone_number %>
+    <h4>電話番号</h4><%= @customer.telephone_number %>
 
     <h4>メールアドレス</h4><%= @customer.email %>
 
-    <h4>配送先</h4><%= link_to "一覧を見る", "#", method: :get, class: "btn btn-primary" %>
+    <h4>配送先</h4><%= link_to "一覧を見る", "#", class: "btn btn-primary" %>
 
-    <h4>注文履歴</h4><%= link_to "一覧を見る", "#", method: :get, class: "btn btn-primary" %>
+    <h4>注文履歴</h4><%= link_to "一覧を見る", "#", class: "btn btn-primary" %>
   </div>
 </div>
 <%= render "shared/footer" %>

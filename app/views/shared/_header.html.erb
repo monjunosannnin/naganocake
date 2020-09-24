@@ -12,7 +12,7 @@
           <%= button_to "ジャンル一覧", admins_genres_path, method: :get, class: "btn btn-default navbar-btn" %>
           <%= button_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn btn-default navbar-btn" %>
           <%= form_tag do %>
-            <%= text_field_tag :search %>
+            <%= text_field_tag :search,'', class: 'seach-text', placeholder: '検索' %>
             <%= submit_tag 'Search' %>
           <% end %>
         </ul>

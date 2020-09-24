@@ -6,10 +6,10 @@
     <nav>
       <ul class="nav navbar-nav navbar-right">
         <li class="cs-name">ようこそ<%= current_customer.kanji_firstname %>さん！</li>
-        <%= button_to "マイページ", mypage_path, method: :get, class: "btn btn-default navbar-btn" %>
-        <%= button_to "商品一覧", products_path, method: :get, class: "btn btn-default navbar-btn" %>
-        <%= button_to "カート", cart_items_path, method: :get, class: "btn btn-default navbar-btn" %>
-        <%= button_to "ログアウト", destroy_customer_session_path, method: :delete, class: "btn btn-default navbar-btn" %>
+        <%= link_to "マイページ", mypage_path, class: "btn btn-default navbar-btn" %>
+        <%= link_to "商品一覧", products_path, class: "btn btn-default navbar-btn" %>
+        <%= link_to "カート", cart_items_path, class: "btn btn-default navbar-btn" %>
+        <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "btn btn-default navbar-btn" %>
       </ul>
     </nav>
   </div>
