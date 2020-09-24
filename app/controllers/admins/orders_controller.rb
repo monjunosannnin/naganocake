@@ -5,7 +5,7 @@ class Admins::OrdersController < ApplicationController
     @orders = Order.all.page(params[:page]).per(10)
     @page_title = "注文履歴一覧"
     quantity_total = Array.new
-    i = 0
+    i = 1
 
     @orders.each do |o|
       @order_products = o.ordered_products
