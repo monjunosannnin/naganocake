@@ -1,32 +1,35 @@
 class Admins::ProductsController < ApplicationController
-
-  # before_action :authenticate_admin!
-  before_action :set_product, only: [:edit, :update]
+  before_action :authenticate_admin!
+  before_action :set_product, only: [:show, :edit, :update]
 
   def index
     @products = Product.all.page(params[:page]).per(10)
+    @page_title = "商品一覧"
   end
 
   def new
     @product = Product.new
-    #@image = Image.new
+    @genres = Genre.all.map {|genre| [genre.name, genre.id]}
+    @page_title = "商品新規登録"
   end
 
   def create
     @product = Product.new(product_params)
-    if@product.save
-      redirect_to admins_product_path(@product)
+    if @product.save
+      redirect_to admins_product_path(@product.id)
       flash[:notice] = 'new product was successfully created.'
     else
-       redirect_back(fallback_location: root_path)
+      redirect_back(fallback_location: root_path)
     end
   end
 
   def show
-    @product = Product.find(params[:id])
+    @page_title = "商品詳細"
   end
 
   def edit
+    @genres = Genre.all.map {|genre| [genre.name, genre.id]}
+    @page_title = "商品編集"
   end
 
   def update
@@ -35,17 +38,16 @@ class Admins::ProductsController < ApplicationController
       redirect_to admins_product_path(@product.id)
     else
       redirect_back(fallback_location: root_path)
+    end
   end
 
   private
 
   def product_params
-    params.require(:product).permit(:genre_id, :name, :explanation, :image, :price, :is_active)
+    params.require(:product).permit(:name, :explanation, :price, :is_active, :image,:genre_id)
   end
 
   def set_product
     @product = Product.find(params[:id])
   end
-  end
-
 end
