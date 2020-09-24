@@ -20,9 +20,9 @@
 
     <h4>メールアドレス</h4><%= @customer.email %>
 
-    <h4>配送先</h4><%= link_to "一覧を見る", "#", method: :get, class: "btn btn-primary" %>
+    <h4>配送先</h4><%= link_to "一覧を見る", deliveries_path, method: :get, class: "btn btn-primary" %>
 
-    <h4>注文履歴</h4><%= link_to "一覧を見る", "#", method: :get, class: "btn btn-primary" %>
+    <h4>注文履歴</h4><%= link_to "一覧を見る", orders_path, method: :get, class: "btn btn-primary" %>
   </div>
 </div>
 <%= render "shared/footer" %>

@@ -76,10 +76,17 @@ class Public::OrdersController < ApplicationController
 	end
 
 	def index
-		
+		@orders = current_customer.orders
+		@total_price = 0
 	end
 
 	def show
+		@order = Order.find(params[:id])
+		@total_price = 0
+		if @order.customer_id != current_customer.id
+		  redirect_back(fallback_location: root_path)
+		  flash[:alert] = "アクセスに失敗しました。"
+		end
 	end
 
 	private
