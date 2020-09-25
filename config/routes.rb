@@ -32,5 +32,6 @@ Rails.application.routes.draw do
     resources :cart_items, only: [ :index, :create, :update, :destroy ]
     resources :orders, only: [ :new, :show, :create, :index ]
       post 'orders/confirm' => 'orders#confirm', as: 'order_confirm'
+    resources 'deliveries', only: [:index, :edit, :update, :destroy, :create] 
   end
 end

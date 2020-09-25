@@ -57,7 +57,7 @@ end
   
   Delivery.create!(
     customer_id: Customer.find(i).id,
-    name: fn + gn,
+    name: fn[0] + gn[0],
     postal_code: (1000000 + i).to_s,
     address: "東京都千代田区",
   )
