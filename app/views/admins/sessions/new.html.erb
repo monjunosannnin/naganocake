@@ -1,5 +1,5 @@
-<%= flash[:error] %>
 <div class="main">
+  <%= render "shared/function" %>
 <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "login_form"}) do |f| %>
   <div class="field row">
     <%= f.label :email, "メールアドレス" %>

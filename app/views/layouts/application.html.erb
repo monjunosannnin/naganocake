@@ -36,11 +36,14 @@
       </div>
     </main>
 <% end %>
-<footer>
-  <div id="footerWrap">
-    <div id="footer">
+
+<% unless admin_signed_in? %>
+  <footer>
+    <div id="footerWrap">
+      <div id="footer">
+      </div>
     </div>
-  </div>
-</footer>
+  </footer>
+<% end %>
 </body>
 </html>

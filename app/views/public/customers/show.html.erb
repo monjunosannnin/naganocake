@@ -1,27 +1,46 @@
 <div class="container">
   <div class="row">
-    <h1>マイページ</h1>
-    <strong>登録情報</strong>
+    <%= render"shared/function" %>
+    <div class="col-md-8">
+    <strong>登録情報</strong><br>
     <%= link_to "編集する", edit_customers_path, method: :get, class: "btn btn-primary" %>
     <%= link_to "パスワードを変更する", edit_customer_registration_path, method: :get, class: "btn btn-primary" %>
 
-    <h4>氏名</h4>
-    <%= @customer.kanji_familyname %>
-    <%= @customer.kanji_firstname %>
+    <table class="table table-bordered">  
+      <tr>
+        <th>氏名</th>
+        <td><%= @customer.kanji_familyname %> <%= @customer.kanji_firstname %></td>
+      </tr>
 
-    <h4>カナ</h4><%= @customer.kana_familyname %>
-    <%= @customer.kana_firstname %>
+      <tr>
+        <th>カナ</th>
+        <td><%= @customer.kana_familyname %> <%= @customer.kana_firstname %></td>
+      </tr>
 
-    <h4>郵便番号</h4><%= @customer.postal_code %>
+      <tr>
+        <th>郵便番号</th>
+        <td><%= @customer.postal_code %></td>
+      </tr>
 
-    <h4>住所</h4><%= @customer.address %>
+      <tr>
+        <th>住所</th>
+        <td><%= @customer.address %></td>
+      </tr>
 
-    <h4>電話番号</h4><%= @customer.telephone_number %>
+      <tr>
+        <th>電話番号</th>
+        <td><%= @customer.telephone_number %></td>
+      </tr>
 
-    <h4>メールアドレス</h4><%= @customer.email %>
+      <tr>
+        <th>メールアドレス</th>
+        <td><%= @customer.email %></td>
+      </tr>
+    </table>
 
-    <h4>配送先</h4><%= link_to "一覧を見る", "#", class: "btn btn-primary" %>
+      <h4>配送先</h4><%= link_to "一覧を見る", "#", class: "btn btn-primary" %>
 
-    <h4>注文履歴</h4><%= link_to "一覧を見る", "#", class: "btn btn-primary" %>
+      <h4>注文履歴</h4><%= link_to "一覧を見る", "#", class: "btn btn-primary" %>
+  </div>
   </div>
 </div>
