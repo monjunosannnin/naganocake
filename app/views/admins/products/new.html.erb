@@ -3,7 +3,7 @@
 <!-- 商品画像 -->
 		<%= form_with model: @product, url: admins_products_path(@product.id),method: :post, local: true do |f| %>
 			<div class="form-group">
-				<%#= attachment_image_tag @image, :image, :fill, 100, 100 %>
+				<%= attachment_image_tag @image, :image, :fill, 100, 100 %>
 				<%= f.attachment_field :image, placeholder: "Image" %>
 			</div>
 
