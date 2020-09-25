@@ -17,7 +17,6 @@ class Admins::ProductsController < ApplicationController
     @product = Product.new(product_params)
     if @product.save
       redirect_to admins_product_path(@product.id)
-      flash[:notice] = 'new product was successfully created.'
     else
       redirect_back(fallback_location: root_path)
     end
@@ -34,7 +33,6 @@ class Admins::ProductsController < ApplicationController
 
   def update
     if@product.update(product_params)
-      flash[:notice] = 'It was successfully updated.'
       redirect_to admins_product_path(@product.id)
     else
       redirect_back(fallback_location: root_path)
