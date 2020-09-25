@@ -1,5 +1,8 @@
+<%= flash[:error] %>
 <div class="container">
+<div class="row">
   <div class="text-center">
+  
     <h3>会員の方はこちらからログイン</h3>
 
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -13,12 +16,12 @@
       </div>
       <%= render "customers/shared/links" %>
       <div class="actions">
-        <%= f.submit "ログイン" %>
+        <%= f.submit "ログイン", class: "btn btn-primary"%>
       </div>
+      <% end %>
       
       <h4>登録がお済みでない方</h4>
       <%= link_to "こちら",new_customer_registration_path %>から新規登録を行ってください。<br>
-    <% end %>
+    </div>
   </div>
 </div>
-<%= render "shared/footer" %>

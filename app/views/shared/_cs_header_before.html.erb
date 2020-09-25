@@ -1,17 +1,17 @@
 <header class="navbar navbar-fixed-top navbar-inverse">
     <div class="container">
       <nav class="nav navbar-nav navbar-left">
-        <p class="header-logo">ながのCAKE</p>
+        <%= link_to "ながのCAKE", root_path, class: "header-logo" %>
       </nav>
       <nav>
         <ul class="nav navbar-nav navbar-right">
-          <%= button_to "About", about_path, method: :get, class: "btn btn-default navbar-btn" %>
-          <%= button_to "商品一覧", products_path, method: :get, class: "btn btn-default navbar-btn" %>
-          <%= button_to "新規登録", new_customer_registration_path, method: :get, class: "btn btn-default navbar-btn" %>
+          <%= link_to "About", about_path, class: "btn btn-default navbar-btn" %>
+          <%= link_to "商品一覧", products_path, class: "btn btn-default navbar-btn" %>
+          <%= link_to "新規登録", new_customer_registration_path, class: "btn btn-default navbar-btn" %>
             <% if request.fullpath == new_admin_session_path %>
-        　　　　<%= button_to "ログイン", new_admin_session_path, method: :get, class: "btn btn-default navbar-btn" %>
+              <%= link_to "ログイン", new_admin_session_path, class: "btn btn-default navbar-btn" %>
             <% else %>
-              <%= button_to "ログイン", new_customer_session_path, method: :get, class: "btn btn-default navbar-btn" %>
+              <%= link_to "ログイン", new_customer_session_path, class: "btn btn-default navbar-btn" %>
             <% end %>
         </ul>
       </nav>

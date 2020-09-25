@@ -49,6 +49,11 @@ a#link_button {
   line-height: 50px;
 }
 
+.header-logo:hover {
+  text-decoration: none;
+  color: #ffffff;
+}
+
 .navbar-nav {
   display: flex;
   justify-content: flex-end;
@@ -58,11 +63,16 @@ a#link_button {
   }
 }
 
-  .cs-name {
+.seach-text {
+    margin-left: 20px;
+    margin-top: 10px;
+}
+
+.cs-name {
     font-size: 16px;
     color: #ffffff;
     padding-top: 20px;
-  }
+}
 
 main {
   padding-top: 70px;
@@ -106,6 +116,15 @@ main {
 
 #passive {
   margin-left: 20px;
+}
+
+#ab {
+  font-size: 50px;
+  margin-left: 150px;
+}
+
+.main-text {
+font-size: 70px;
 }
 
 #footerWrap {

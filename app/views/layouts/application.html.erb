@@ -36,5 +36,14 @@
       </div>
     </main>
 <% end %>
+
+<% unless admin_signed_in? %>
+  <footer>
+    <div id="footerWrap">
+      <div id="footer">
+      </div>
+    </div>
+  </footer>
+<% end %>
 </body>
 </html>

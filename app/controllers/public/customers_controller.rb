@@ -3,6 +3,7 @@ class Public::CustomersController < ApplicationController
 
   def show
     @customer = Customer.find(current_customer.id)
+    @page_title = "マイページ"
   end
 
   def edit

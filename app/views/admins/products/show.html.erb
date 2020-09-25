@@ -1,4 +1,3 @@
-<%=flash[:notice] %>
 <table class="table">
   <thead>
       <tr>
@@ -9,7 +8,7 @@
       </tr>
     </thead>
   <tr>
-  <%= attachment_image_tag @product, :image , fallback: "no_image.jpeg", size: '100x100'%>
+  <%#= attachment_image_tag @product, :image , fallback: "no_image.jpeg", size: '100x100'%>
     <td><%= @product.name%></td>
     <td><%= @product.price %>（<%= (@product.price*1.1).to_i %>）円</td>
     <td><%= @product.genre.name %></td>
