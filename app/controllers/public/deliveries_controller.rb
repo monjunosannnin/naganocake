@@ -1,4 +1,8 @@
 class Public::DeliveriesController < ApplicationController
+	
+	before_action :authenticate_customer!
+	before_action :set_customer
+
 	def index
 		@delivery = Delivery.new
 		@deliveries = current_customer.deliveries
@@ -39,6 +43,10 @@ class Public::DeliveriesController < ApplicationController
 	end
 
 	private
+
+	def set_customer
+		@customer = current_customer
+	end
 
 	def delivery_params
 		params.require(:delivery).permit(:postal_code, :address, :name)
