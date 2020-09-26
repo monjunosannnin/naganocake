@@ -11,6 +11,7 @@ class Public::ProductsController < ApplicationController
 			@products = Product.all
 		end
 		@genres = Genre.all
+		@products_page= @Product.page(params[:page]).per(8)
 	end
 
 	def show
@@ -20,5 +21,3 @@ class Public::ProductsController < ApplicationController
 	end
 
 end
-
-
