@@ -94,7 +94,7 @@ product_types = %w{
     genre_id: Genre.find(((n % 3) + 1).to_i).id,
     name: pt + gn,
     explanation: "美味しいです",
-    image_id: File.open("./app/assets/images/test.jpg"),
+    # image_id: File.open("./app/assets/images/test.jpg"),
     price: (i.to_s + "00").to_i,
     is_active: [true, false].sample
   )
