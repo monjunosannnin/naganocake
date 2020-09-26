@@ -9,8 +9,8 @@
                     <h3><strong>支払方法</strong></h3>
                 </div>
                 <div class="row">
-                    <p><%= f.radio_button :payment_method, :クレジットカード, checked: true %>クレジットカード</p>
-                    <p><%= f.radio_button :payment_method, :銀行振込, checked: true %>銀行振込</p>
+                    <p><%= f.radio_button :payment_method, :"クレジットカード", checked: true %>クレジットカード</p>
+                    <p><%= f.radio_button :payment_method, :"銀行振込", checked: true %>銀行振込</p>
                 </div>
                 <div class="row">
                     <h3><strong>お届け先</strong></h3>
@@ -23,7 +23,7 @@
                     </p>
                     <p>
                     <%= f.radio_button :add, 2 %>登録住所から選択<br>
-                    <%= f.collection_select :address, @customers, :id, :full_address %>
+                    <%= f.collection_select :address, @deliveries, :id, :full_address %>
                     </p>
                     <%= f.radio_button :add, 3 %>新しいお届け先<br>
                     <div class="row">
