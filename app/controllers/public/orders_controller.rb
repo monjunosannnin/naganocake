@@ -1,9 +1,12 @@
 class Public::OrdersController < ApplicationController
 
+	before_action :authenticate_customer!
+	before_action :set_customer
+
 	def new
 		@order = Order.new
 		@customer = current_customer
-		@customers = Customer.all
+		@deliveries = @customer.deliveries
 	end
 
 	def confirm
@@ -11,7 +14,7 @@ class Public::OrdersController < ApplicationController
 		@cart_items = current_customer.cart_items
 		@customer = current_customer
 		@total_price = 0
-		@order.payment_method = params[:order][:payment_method].to_i
+		@order.payment_method = params[:order][:payment_method]
 		@add = params[:order][:add].to_i
 		case @add
 			when 1
@@ -23,6 +26,7 @@ class Public::OrdersController < ApplicationController
 			@delivery = Delivery.find(@sta)
 			@order.postal_code = @delivery.postal_code
 			@order.address = @delivery.address
+			@order.name = @delivery.name
 			when 3
 			@order.postal_code = params[:order][:new_address][:postal_code]
 			@order.address = params[:order][:new_address][:address]
@@ -71,7 +75,7 @@ class Public::OrdersController < ApplicationController
 	  
 			redirect_to thanks_path
 		else
-			redirect_to products_path, danger: 'カートが空です。'
+			redirect_to products_path
 		end
 	end
 
@@ -85,15 +89,18 @@ class Public::OrdersController < ApplicationController
 		@total_price = 0
 		if @order.customer_id != current_customer.id
 		  redirect_back(fallback_location: root_path)
-		  flash[:alert] = "アクセスに失敗しました。"
 		end
 	end
 
 	private
 
+	def set_customer
+		@customer = current_customer
+	end
+
 	def order_params
 	params.require(:order).permit(
-		:address, :name, :order_status, :payment_method, :postal_code, :shipping_cost,
+		:address, :name, :order_status, :payment_method, :postal_code, :shipping_cost, :billing_amount, :status,
 		ordered_products_attributes: [:order_id, :product_id, :quantity, :price, :status]
       )
 	end	
