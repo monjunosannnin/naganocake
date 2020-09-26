@@ -53,7 +53,7 @@ class Public::OrdersController < ApplicationController
 			@order.save
 			if Delivery.find_by(address: @order.address).nil?
 			  @delivery = Delivery.new
-			  @delivery.post_code = @order.post_code
+			  @delivery.postal_code = @order.postal_code
 			  @delivery.address = @order.address
 			  @delivery.name = @order.name
 			  @delivery.customer_id = current_customer.id

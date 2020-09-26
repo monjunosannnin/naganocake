@@ -8,6 +8,22 @@ class Order < ApplicationRecord
   validates :address, presence: true
   validates :name, presence: true
 
+  def ordered_products_status_change(opm)
+    opd = self.ordered_products
+
+    if opm.values[0] == "入金待ち"
+      opd.each do |op|
+        op.update(status: "製作不可")
+      end
+    elsif opm.values[0] != "入金待ち"
+      if opd.where.not(status: "製作不可").count == 0
+        opd.each do |op|
+          op.update(status: "製作待ち")
+        end
+      end
+    end
+  end
+
   enum payment_method: {
     クレジットカード: 0,
     銀行振込: 1

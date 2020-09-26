@@ -31,6 +31,7 @@ class Admins::OrdersController < ApplicationController
 
   def update
     @order = Order.find(params[:id])
+    @order.ordered_products_status_change(order_params)
     @order.update(order_params)
     redirect_back fallback_location: admins_root_path
   end
