@@ -16,7 +16,7 @@
     </div>
 	<div class="col-md-9">
 		<h1><%= @name %>一覧</h1>
-		<p>全<%= @products.count %>件</p>
+		<p>全<%= @products.total_count %>件</p>
 		<% @products.each do |product| %>
 		  <div class="col-xs-3">
 		    <div>
@@ -26,9 +26,9 @@
 			</div>
 		  </div>
 		<% end %>
-		<div class="text-center">
-		  <%= paginate @products_page %>
-		</div>
+	</div>
+	<div class="text-center">
+	  <%= paginate @products %>
 	</div>
   </div>
 </div>

@@ -3,15 +3,14 @@ class Public::ProductsController < ApplicationController
 	def index
 		if params[:genre_id].present?
 			@genre = Genre.find(params[:genre_id])
-			@products = Product.where(genre_id: params[:genre_id])
+			@products = Product.where(genre_id: params[:genre_id]).page(params[:page]).per(8)
 			@name = @genre.name
 		else
 			@genre = Genre.new
 			@name = "商品"
-			@products = Product.all
+			@products = Product.all.page(params[:page]).per(8)
 		end
 		@genres = Genre.all
-		@products_page= @Product.page(params[:page]).per(8)
 	end
 
 	def show
