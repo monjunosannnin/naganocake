@@ -25,11 +25,11 @@
       <% @random.each do |product|%>
         <div class="col-xs-3">
           <div>
-            <% link_to product_path(product.id) do %>
-              <%= attachment_image_tag product, :image, fallback: "no_image.jpg", size: '40x40' %>
-            <% end %><br>
-            <%= product.name %><br>
-            ￥<%= (product.price*1.1).to_i %>
+              <%= link_to product_path(product.id) do %>
+                <%= attachment_image_tag product, :image, fallback: "no_image.jpg", size: '100x100'%>
+              <% end %><br>
+              <%= product.name %><br>
+              ￥<%= (product.price*1.1).to_i %>
           </div>
         </div>
       <% end %>
