@@ -8,12 +8,12 @@ class Public::CustomersController < ApplicationController
 
   def edit
     @customer = Customer.find(current_customer.id)
+    @page_title = "登録情報編集"
   end
 
   def update
     @customer = Customer.find(current_customer.id)
     if @customer.update(customer_params)
-       flash[:notice] = 'It was successfully updated.'
        redirect_to mypage_path
     else
        render :edit
