@@ -59,7 +59,7 @@ end
     customer_id: Customer.find(i).id,
     name: fn[0] + gn[0],
     postal_code: (1000000 + i).to_s,
-    address: "東京都千代田区",
+    address: "東京都千代田区"
   )
 end
 
@@ -135,7 +135,7 @@ end
     postal_code: (1000000 + i).to_s,
     address: "東京都千代田区",
     shipping_cost: 800,
-    status: ((i + 1) % 4).to_i
+    status: 0
   )
 
   count += 1
@@ -147,7 +147,7 @@ end
     order_id: Order.find((n / 2) + 1).id,
     product_id: Product.find(product_select[n]).id,
     quantity: quantity[n],
-    status: (product_select[n] % 3).to_i,
+    status: 0,
     price: ordered_product_price[n]
   )
 end
