@@ -3,8 +3,14 @@ class OrderedProduct < ApplicationRecord
   belongs_to :product
 
   def ordered_product_update_check(opp)
-    if self.order.status != "入金待ち" && opp.values[0] != "製作不可"
+    order = self.order
+
+    if order.status != "入金待ち" && opp.values[0] != "製作不可"
       self.update(opp)
+
+      if order.ordered_products.where.not(status: "製作完了").count == 0
+        order.update(status: "発送準備中")
+      end
     end
   end
 
