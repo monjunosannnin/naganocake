@@ -36,7 +36,7 @@
                     <% end %>
                 </tbody>
             </table>
-            <h2><%= link_to "買い物を続ける", products_path, class: 'btn btn-primary' %></h2>
+            <h2><%= link_to "買い物を続ける", root_path, class: 'btn btn-primary' %></h2>
             <div clss ="text-right">
                 <table class="table table-bordered">
                         <tr>　
@@ -45,8 +45,8 @@
                 </table>
             </div>
         </div>
-        <div clss ="text-center">
-            <h2><%= link_to "情報入力", new_order_path, class: 'btn btn-success btn-lg active' %></h2>
-        </div>
+    </div>
+    <div clss ="text-center">
+        <%= link_to "情報入力", new_order_path, class: 'btn btn-success btn-lg active' %>
     </div>
 </div>

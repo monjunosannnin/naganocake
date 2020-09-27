@@ -5,7 +5,8 @@ class Public::DeliveriesController < ApplicationController
 
 	def index
 		@delivery = Delivery.new
-		@deliveries = current_customer.deliveries
+		@customer = current_customer
+		@deliveries = @customer.deliveries
 	end
 
 	def create
