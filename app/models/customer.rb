@@ -15,4 +15,8 @@ class Customer < ApplicationRecord
   has_many :cart_items, foreign_key: 'customer_id', dependent: :destroy
   has_many :deliveries, foreign_key: 'customer_id', dependent: :destroy
 
+  def full_name
+    self.kanji_familyname + self.kanji_firstname
+end
+
 end

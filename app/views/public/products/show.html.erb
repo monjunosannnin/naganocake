@@ -1,17 +1,35 @@
-<h2>ジャンル検索</h2>
-<ul>
-	<% @genres.each do |genre| %>
-		<li><%= link_to genre.name, products_path(genre_id: genre.id) %></li>
-	<% end %>
-</ul>
-
-<%# attachment_image_tag product, :image, :fill, 50, 50, size: '50x50' %>
-<p><%= @product.name %></p>
-<p><%= @product.explanation %></p>
-<p>¥<%= (@product.price * 1.1).to_i %>(税込）</p>
-
-<%= form_with(model: [@product, @cart_item], local: true, url: {controller: 'cart_items', action: 'create'}) do |f| %>
-<%= f.hidden_field :product_id, value: @product.id %>
-<%= f.select :quantity, options_for_select((1..20).to_a), include_blank: "個数選択" %>
-<%= f.submit "カートに入れる" %>
-<% end %>
+<div class="container">
+	<div class="row">
+    	<div class="col-md-2">  
+			<div class="panel panel-default">
+        		<div class="panel-heading">
+          			ジャンル検索
+				</div>
+				<% @genres.each do |genre| %>
+					<div class="panel-body">
+						<%= link_to genre.name, products_path(genre_id: genre.id) %>
+					</div>
+				<% end %>
+				<div class="panel-footer">
+				</div>
+			</div>
+		</div>
+		<div class="col-md-10">
+			<div class="col-lg-4 offset-lg-2">
+				<%# attachment_image_tag product, :image, :fill, 600, 500, size: '50x50' %>
+			</div>
+			 <div class="col-lg-4">
+				<h2><%= @product.name %></h2>
+				<h4><%= @product.explanation %></h4>
+				<h4>¥<%= (@product.price * 1.1).to_i %>(税込）</h4>
+			</div>
+		</div>
+		<div class="text-center">
+			<%= form_with(model: [@product, @cart_item], local: true, url: {controller: 'cart_items', action: 'create'}) do |f| %>
+				<%= f.hidden_field :product_id, value: @product.id %>
+				<%= f.select :quantity, options_for_select((1..20).to_a, class: "control-label"), include_blank: "個数選択" %>
+				<%= f.submit "カートに入れる", class: "btn btn-primary" %>
+			<% end %>
+		</div>
+	</div>
+</div>
