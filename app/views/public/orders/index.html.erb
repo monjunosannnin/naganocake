@@ -16,7 +16,7 @@
                 <tbody>
                     <% @orders.each do |order| %>
                         <tr>
-                            <td><%= l @order.created_at, format: :short %></td>
+                            <td><%= l order.created_at, format: :short %></td>
                             <td>
                                 <%= order.postal_code %><br>
                                 <%= order.address %><br>

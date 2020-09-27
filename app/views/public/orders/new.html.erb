@@ -9,17 +9,19 @@
                     <h3><strong>支払方法</strong></h3>
                 </div>
                 <div class="row">
-                    <p><%= f.radio_button :payment_method, :"クレジットカード", checked: true %>クレジットカード</p>
-                    <p><%= f.radio_button :payment_method, :"銀行振込", checked: true %>銀行振込</p>
+                    <div class="col-lg-4 btn-group" data-toggle="buttons">
+                        <p><%= f.radio_button :payment_method, :"クレジットカード", checked: true %>クレジットカード</p>
+                        <p><%= f.radio_button :payment_method, :"銀行振込", checked: true %>銀行振込</p>
+                    </div>
                 </div>
                 <div class="row">
                     <h3><strong>お届け先</strong></h3>
                 </div>
                     <p>
                         <%= f.radio_button :add, 1 , checked: true %>ご自身の住所<br>
-                        <%= @order.postal_code %>
-                        <%= @order.address %>
-                        <%= @order.name  %>
+                        <%= @customer.postal_code %>
+                        <%= @customer.address %>
+                        <%= @customer.full_name  %>
                     </p>
                     <p>
                     <%= f.radio_button :add, 2 %>登録住所から選択<br>
@@ -33,7 +35,7 @@
                                     <div class="col-lg-3">
                                         <strong>郵便番号(ハイフンなし)</strong>
                                     </div>
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-9">
                                         <%= na.text_field :postal_code %>
                                     </div>
                                 </div>
@@ -41,7 +43,7 @@
                                     <div class="col-lg-3">
                                         <strong>住所</strong>
                                     </div>
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-9">
                                         <%= na.text_field :address %>
                                     </div>
                                 </div>
@@ -49,14 +51,16 @@
                                     <div class="col-lg-3">
                                     <strong>宛名</strong>
                                     </div>
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-9">
                                         <%= na.text_field :name %>
                                     </div>
                                 </div>
                             <% end %>
                         </div>
                     </div>
-                <h2><%= f.submit "確認画面へ進む", class: "btn btn-danger" %></h2>
+                <div class="text-center">
+                    <h2><%= f.submit "確認画面へ進む", class: "btn btn-primary" %></h2>
+                </div>
             <% end %>
         </div>
     </div>
