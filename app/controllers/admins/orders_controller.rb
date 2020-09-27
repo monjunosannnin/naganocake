@@ -3,11 +3,12 @@ class Admins::OrdersController < ApplicationController
 
   def index
     @orders = Order.all.page(params[:page]).per(10)
+    @orders_all = Order.all
     @page_title = "注文履歴一覧"
     quantity_total = Array.new
     i = 1
 
-    @orders.each do |o|
+    @orders_all.each do |o|
       @order_products = o.ordered_products
       quantity = 0
 
