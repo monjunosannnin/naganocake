@@ -16,7 +16,7 @@
 		</div>
 		<div class="col-md-10">
 			<div class="col-lg-4 offset-lg-2">
-				<%# attachment_image_tag product, :image, :fill, 600, 500, size: '50x50' %>
+				<%= attachment_image_tag @product, :image, :fill, 600, 500, size: '300x300', fallback: "no_image.jpg" %>
 			</div>
 			 <div class="col-lg-4">
 				<h2><%= @product.name %></h2>
