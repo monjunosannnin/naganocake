@@ -26,7 +26,7 @@ Rails.application.routes.draw do
     get '/customers/mypage/withdrawal' => 'customers#withdrawal', as: 'customers_withdrawal'
     put '/customers/mypage/unsubscribe' => 'customers#unsubscribe', as: 'customers_unsubscribe'
     get '/customers/mypage/edit' => 'customers#edit', as: 'edit_customers'
-    patch '/customers/mypage' => 'customers#update', as: 'mypage_path'
+    patch '/customers/mypage' => 'customers#update', as: 'update_mypage'
     delete '/cart_items/destroy_all' => 'cart_items#destroy_all'
     resources :products, only: [ :index, :show ]
     resources :cart_items, only: [ :index, :create, :update, :destroy ]
