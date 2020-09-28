@@ -18,7 +18,7 @@ class Public::DeliveriesController < ApplicationController
 			@deliveries = current_customer.deliveries
 			render :index
 		end
-	  end
+	end
 
 	def edit
 		@delivery = Delivery.find(params[:id])
