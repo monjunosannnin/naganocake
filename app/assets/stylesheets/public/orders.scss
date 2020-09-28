@@ -1,3 +1,52 @@
 // Place all the styles related to the public/orders controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.container{
+    margin-bottom: 10px;
+    padding: 10px;
+}
+.button{
+    border-radius: 1px 1px;
+    margin-bottom: 10px;
+}
+p{
+    text-indent: 1em;
+}
+p.indentback{
+    text-indent: -1em;
+    padding-left: 2em;
+}
+div.indentback{
+    text-indent: -1em;
+    padding-left: 2em;
+}
+p.name{
+    width: 200px;
+    height: 50px;
+}
+.button1{
+    width: 650px;
+    height: 30px;
+    margin-bottom: 10px;
+}
+table.table{
+    margin: 10px 10px 0px 0px;
+}
+th td{
+    height: 60px;
+}
+div.col-lg-4{
+    height: 178px;
+    padding-top: 15px;
+}
+h2{
+    margin-bottom: 10px;
+    padding-left: 30px;
+}
+div.col-lg-4.show{
+    padding: 0px;
+}
+table.table.table-bordered.billing{
+    margin: 0px;
+    height: 120px;
+}

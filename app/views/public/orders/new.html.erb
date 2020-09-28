@@ -16,44 +16,46 @@
                 </div>
                 <div class="row">
                     <h3><strong>お届け先</strong></h3>
-                </div>
-                    <p>
+                </div>                
+                    <p class="indentback">
                         <%= f.radio_button :add, 1 , checked: true %>ご自身の住所<br>
                         <%= @customer.postal_code %>
-                        <%= @customer.address %>
+                        <%= @customer.address %><br>
                         <%= @customer.full_name  %>
                     </p>
-                    <p>
-                    <%= f.radio_button :add, 2 %>登録住所から選択<br>
-                    <%= f.collection_select :address, @deliveries, :id, :full_address %>
+                    <p class="indentback">
+                        <%= f.radio_button :add, 2 %>登録住所から選択<br>
+                        <%= f.collection_select :address, @deliveries, :id, :full_address, class:"button" %>
                     </p>
-                    <%= f.radio_button :add, 3 %>新しいお届け先<br>
-                    <%= f.fields_for :new_address do |na| %>
-                        <div class="row">
-                            <div class="col-lg-3">
-                                <strong>郵便番号(ハイフンなし)</strong>
+                    <div class="indentback">
+                        <%= f.radio_button :add, 3 %>新しいお届け先<br>
+                        <%= f.fields_for :new_address do |na| %>
+                            <div class="row">
+                                <div class="col-lg-3">
+                                    <p class="name">郵便番号(ハイフンなし)</p>
+                                </div>
+                                <div class="col-lg-9">
+                                    <%= na.text_field :postal_code, class:"button" %>
+                                </div>
                             </div>
-                            <div class="col-lg-9">
-                                <%= na.text_field :postal_code %>
+                            <div class="row">
+                                <div class="col-lg-3">
+                                    <p class="name">住所</p>
+                                </div>
+                                <div class="col-lg-9">
+                                    <%= na.text_field :address, class:"button1" %>
+                                </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-3">
-                                <strong>住所</strong>
-                            </div>
-                            <div class="col-lg-9">
-                                <%= na.text_field :address %>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-3">
-                            <strong>宛名</strong>
-                            </div>
-                            <div class="col-lg-9">
-                                <%= na.text_field :name %>
-                            </div>
-                        </div>
-                    <% end %>
+                            <div class="row">
+                                <div class="col-lg-3">
+                                <p class="name">宛名</p>
+                                </div>
+                                <div class="col-lg-9">
+                                    <%= na.text_field :name, class:"button" %>
+                                </div>
+                            </div>    
+                        <% end %> 
+                    </div>               
                 <div class="text-center">
                     <h2><%= f.submit "確認画面へ進む", class: "btn btn-primary" %></h2>
                 </div>

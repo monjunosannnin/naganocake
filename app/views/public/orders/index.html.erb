@@ -1,7 +1,8 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-9">
-            <table>
+            <h2>注文履歴一覧</h2>
+            <table class="table table-bordered">
                 <thead>
                     <tr>
                         <th>注文日</th>
@@ -21,16 +22,16 @@
                                 <%= order.postal_code %><br>
                                 <%= order.address %><br>
                                 <%= order.name %> 
-                            </td>
-                            <% order.ordered_products.each do |ordered_product| %>
-                                <td>
+                            </td>                            
+                            <td>
+                                <% order.ordered_products.each do |ordered_product| %>
                                     <% @total_price = (ordered_product.product.price * 1.1 * ordered_product.quantity + @total_price).to_i %>
                                     <%= ordered_product.product.name %><br>
-                                </td>
-                            <% end %>
+                                <% end %>
+                            </td>                            
                             <td><%= (@total_price + 800).to_i %></td>
                             <td><%= order.status %></td>
-                            <td><%= link_to "表示する", order_path(order.id), class: "btn btn-sm btn-danger" %></td>
+                            <td><%= link_to "表示する", order_path(order.id), class: "btn btn-sm btn-primary" %></td>
                         </tr>
                     <% end %>
                 </tbody>
