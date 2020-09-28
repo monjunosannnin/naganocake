@@ -10,7 +10,7 @@
      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   </head>
 <body>
-<% if admin_signed_in? %>
+<% if admin_signed_in? && /\/admins/ =~ request.fullpath %>
 <!-- 管理者画面のヘッダー -->
   <%= render "shared/header" %>
   <main>
@@ -19,7 +19,7 @@
       <%= yield %>
     </div>
   </main>
-<% elsif customer_signed_in? %>
+<% elsif customer_signed_in? && /\/admins/ !~ request.fullpath %>
 <!-- 顧客側　ログイン後 -->
     <%= render "shared/cs_header" %>
     <main>
@@ -37,7 +37,7 @@
     </main>
 <% end %>
 
-<% unless admin_signed_in? %>
+<% if customer_signed_in? && /\/admins/ !~ request.fullpath %>
   <footer>
     <div id="footerWrap">
       <div id="footer">
