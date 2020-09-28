@@ -16,7 +16,8 @@ class Public::CustomersController < ApplicationController
     if @customer.update(customer_params)
        redirect_to mypage_path
     else
-       render :edit
+       redirect_to edit_customers_path
+       @page_title = "登録情報編集"
     end
   end
 
